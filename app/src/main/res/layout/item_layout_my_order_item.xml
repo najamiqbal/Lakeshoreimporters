@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/margin_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_4"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_8">
+
+        <ImageView
+            android:id="@+id/iv_moi_image"
+            android:layout_width="0dp"
+            android:layout_height="74dp"
+            android:layout_weight=".2"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_weight=".8"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_moi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:maxLines="1"
+                android:textColor="@color/themeBlue"
+                android:textSize="@dimen/_14font" />
+
+            <TextView
+                android:id="@+id/tv_moi_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:maxLines="1"
+                android:textColor="@color/themeBlue"
+                android:textSize="@dimen/_14font"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_moi_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/themeBlue"
+                android:textSize="@dimen/_14font" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/midGrey" />
+
+
+</LinearLayout>

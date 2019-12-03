@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:openDrawer="start">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="270dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:itemTextColor="@color/black"
+            app:menu="@menu/drawer_menu">
+
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:background="@drawable/et_background_normal_with_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_home"
+            android:text="Home"
+            android:padding="@dimen/_4dp"
+            android:textAllCaps="false"
+            android:textColor="@color/themeBlue"
+            android:textAlignment="center"
+            >
+
+        </Button>
+        <Button
+            android:id="@+id/btn_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_4dp"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_category"
+            android:text="Category"
+            android:textAllCaps="false"
+            android:textColor="@color/themeBlue">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_4dp"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_notifications"
+            android:text="Alert"
+            android:textAllCaps="false"
+            android:textColor="@color/themeBlue"
+            >
+
+        </Button>
+        <Button
+            android:id="@+id/btn_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_4dp"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_person_black_24dp"
+            android:text="Me"
+            android:textAllCaps="false"
+            android:textColor="@color/themeBlue">
+        </Button>
+    </LinearLayout>
+</RelativeLayout>

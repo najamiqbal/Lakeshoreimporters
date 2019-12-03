@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.AddAddressActivity">
+
+    <include layout="@layout/title_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_18">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_sad_discount_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_weight=".7"
+                    android:background="@drawable/et_background_normal_with_border"
+                    android:hint="Discount Code"
+                    android:paddingStart="@dimen/margin_12"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+                <Button
+                    android:id="@+id/btn_sad_apply_discount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:background="@color/grey"
+                    android:text="APPLY"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:background="@color/midGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight=".5"
+                        android:gravity="start"
+                        android:text="Subtotal" />
+
+                    <TextView
+                        android:id="@+id/tv_sad_subtotal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight=".5"
+                        android:gravity="end"
+                        android:text="Subtotal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight=".5"
+                        android:gravity="start"
+                        android:text="Shipping" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight=".5"
+                        android:gravity="end"
+                        android:text="Calculated at next step"
+                        android:textColor="@color/grey" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:background="@color/midGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight=".5"
+                    android:gravity="start"
+                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <TextView
+                    android:id="@+id/tv_sad_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight=".5"
+                    android:gravity="end"
+                    android:text="Subtotal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_spent_rule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:layout_marginBottom="@dimen/_8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/_8dp"
+                    android:text="Store Credit"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_sd_store_credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_margin="@dimen/_8dp"
+                    android:ellipsize="end"
+                    android:entries="@array/store_credit"
+                    android:padding="@dimen/_4dp"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@color/light_background"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14font" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:background="@color/midGrey" />
+
+            <ViewFlipper
+                android:id="@+id/viewflipper_sad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight=".3"
+                            android:gravity="start"
+                            android:text="Contact: "
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16font"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_sad_contact_info"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight=".7"
+                            android:gravity="start"
+                            android:text=""
+                            android:textColor="@color/grey" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height=".5dp"
+                        android:layout_marginBottom="@dimen/margin_8"
+                        android:background="@color/midGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight=".3"
+                            android:gravity="start"
+                            android:text="Shipping to:"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16font"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_sad_ship_address_info"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight=".7"
+                            android:gravity="start"
+                            android:text=""
+                            android:textColor="@color/grey" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_8"
+                        android:paddingStart="@dimen/margin_8"
+                        android:text="Card Number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14font" />
+
+                    <EditText
+                        android:id="@+id/et_sad_card_number"
+                        style="@style/EditTextNormalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginBottom="@dimen/margin_12"
+                        android:gravity="center|start"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_8"
+                        android:paddingStart="@dimen/margin_8"
+                        android:text="Name on card"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14font" />
+
+                    <EditText
+                        android:id="@+id/et_sad_card_name"
+                        style="@style/EditTextNormalStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginBottom="@dimen/margin_12"
+                        android:gravity="center|start"
+                        android:inputType="text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_8"
+                            android:layout_weight=".6"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/margin_8"
+                                android:paddingStart="@dimen/margin_8"
+                                android:text="Expiration date (MM/YY)"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14font" />
+
+                            <TextView
+                                android:id="@+id/tv_sad_expiration_date"
+                                style="@style/EditTextNormalStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="44dp"
+                                android:layout_marginBottom="@dimen/margin_12"
+                                android:gravity="center|start" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/margin_8"
+                                android:paddingStart="@dimen/margin_8"
+                                android:text="Security Code"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14font" />
+
+                            <EditText
+                                android:id="@+id/tv_sad_security_code"
+                                style="@style/EditTextNormalStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="44dp"
+                                android:layout_marginBottom="@dimen/margin_12"
+                                android:gravity="center|start"
+                                android:inputType="number" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ViewFlipper>
+
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="start"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/_16font"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:gravity="start"-->
+            <!--android:text="Shipping Address"/>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="First Name"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_first_name"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Last Name"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_last_name"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Company"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_company"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Address 1"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_address1"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Address 2"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_address2"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="City"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_city"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="State"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_state"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Country"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_country"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Postal/Zip Code"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_postal_code"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="text" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/margin_8"-->
+            <!--android:paddingStart="@dimen/margin_8"-->
+            <!--android:text="Phone"-->
+            <!--android:textColor="@color/midGrey"-->
+            <!--android:textSize="@dimen/_16font" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/et_sad_phone"-->
+            <!--style="@style/EditTextNormalStyle"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_marginBottom="@dimen/margin_12"-->
+            <!--android:inputType="phone" />-->
+
+            <Button
+                android:id="@+id/btn_sad_next"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="44dp"
+                android:background="@drawable/btn_background"
+                android:elevation="@dimen/_2dp"
+                android:gravity="center"
+                android:text="Continue to payment"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18font"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

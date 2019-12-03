@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_8dp"
+        android:layout_marginBottom="@dimen/_18dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/_4dp"
+            android:textSize="@dimen/_14font"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/about_us_note" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:text="@string/q_n_a"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16font"/>
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/_14font"-->
+            <!--android:padding="@dimen/_4dp"-->
+            <!--android:text="@string/q_n_a_detail"/>-->
+
+        <TextView
+            android:id="@+id/tv_faq_q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q1"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_a1"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q2"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a2"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q3"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a3"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q4"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a4"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q5"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a5"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q6"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a6"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q7"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a7"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q8"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_a8"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q9"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/faq_a9"
+            android:padding="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/square_border_bg"/>
+
+        <TextView
+            android:id="@+id/tv_faq_q10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:text="@string/faq_q10"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:background="@drawable/square_border_bg"/>
+
+
+        <TextView
+            android:id="@+id/tv_faq_a10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:visibility="gone"
+            android:text="@string/faq_a10"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/_18dp"
+            android:background="@drawable/square_border_bg"/>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.AddAddressActivity">
+
+    <include layout="@layout/title_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_18">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="First Name"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_first_name"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Last Name"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_last_name"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Company"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_company"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Address 1"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_address1"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Address 2"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_address2"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="City"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_city"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="State"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_state"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Country"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_country"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Postal/Zip Code"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_postal_code"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:text="Phone"
+                android:textColor="@color/midGrey"
+                android:textSize="@dimen/_16font" />
+
+            <EditText
+                android:id="@+id/et_ad_phone"
+                style="@style/EditTextNormalStyle"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/btn_add_address"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_margin="44dp"
+                android:background="@drawable/btn_background"
+                android:text="Add a New Address"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:elevation="@dimen/_2dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18font" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

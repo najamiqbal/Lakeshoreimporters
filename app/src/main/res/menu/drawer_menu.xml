@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/nav_buy_now"
+        android:title="@string/faceboo_buys" />
+ <!--   <item
+        android:id="@+id/nav_jake_spice"
+        android:title="@string/jake_spice" />-->
+    <item
+        android:id="@+id/nav_case_extravaganza"
+        android:title="@string/case_extravaganza" />
+
+    <group android:id="@+id/id1">
+        <item
+            android:id="@+id/nav_extras"
+            android:title="@string/extra_extra" />
+<!--
+        <item
+            android:id="@+id/nav_buy_status"
+            android:title="@string/past_buys" />-->
+
+        <item
+            android:id="@+id/nav_bin_requests"
+            android:title="@string/bin_requests" />
+    </group>
+    <group android:id="@+id/id2">
+
+        <item
+            android:id="@+id/nav_about_us"
+            android:title="@string/about_us" />
+
+        <item
+            android:id="@+id/nav_warranty_claim"
+            android:title="@string/warrenty_claim" />
+
+    </group>
+
+    <group android:id="@+id/id3">
+
+        <item
+            android:id="@+id/nav_profile"
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/nav_policies"
+            android:title="@string/policies" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/logout" />
+
+    </group>
+
+</menu>

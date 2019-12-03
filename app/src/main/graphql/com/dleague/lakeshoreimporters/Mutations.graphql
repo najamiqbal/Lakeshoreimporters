@@ -1,0 +1,164 @@
+
+mutation registerUser($input: CustomerCreateInput!){
+  customerCreate(input: $input) {
+    customer{
+      id
+      email
+      firstName
+      lastName
+    }
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation createUserAccessToken($input: CustomerAccessTokenCreateInput!){
+  customerAccessTokenCreate(input: $input) {
+    customerAccessToken{
+      accessToken
+    }
+    customerUserErrors{
+    	field
+        code
+        message
+    }
+  }
+}
+
+mutation createCustomerAddress($token: String!, $address: MailingAddressInput!){
+  customerAddressCreate(customerAccessToken: $token, address: $address){
+    customerAddress{
+      id
+      firstName
+      lastName
+      latitude
+      longitude
+    }
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation updateCustomerAddress($id: ID!, $token: String!, $address: MailingAddressInput!){
+  customerAddressUpdate(id: $id, customerAccessToken: $token, address: $address){
+    customerAddress{
+      id
+    }
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation updateDefaultCustomerAddress($token: String!, $address: ID!) {
+  customerDefaultAddressUpdate(customerAccessToken: $token, addressId: $address) {
+    customer {
+      id
+      defaultAddress {
+        id
+      }
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation deleteCustomerAddress($id: ID!, $token: String!){
+  customerAddressDelete(id: $id,  customerAccessToken: $token){
+    deletedCustomerAddressId
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation createCheckout($input: CheckoutCreateInput!){
+  checkoutCreate(input: $input){
+    checkout{
+      currencyCode
+      id
+      email
+      requiresShipping
+      lineItems(first: 50){
+        edges{
+          cursor
+          node{
+            id
+            quantity
+            title
+            variant{
+              id
+              title
+              price
+            }
+          }
+        }
+      }
+     	totalPrice
+      webUrl
+    }
+    checkoutUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation applyDiscount($discountCode: String!, $checkoutId: ID!){
+  checkoutDiscountCodeApplyV2(discountCode: $discountCode, checkoutId: $checkoutId){
+    checkout{
+      id
+      webUrl
+      orderStatusUrl
+      subtotalPrice
+      totalPrice
+    }
+    checkoutUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation updateCustomer($id: String!, $input: CustomerUpdateInput!) {
+  customerUpdate(customerAccessToken: $id, customer: $input) {
+    customer {
+      id
+      firstName
+      lastName
+      email
+      phone
+      displayName
+    }
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation customerRecover($email: String!) {
+  customerRecover(email: $email) {
+    customerUserErrors{
+      code
+      field
+      message
+    }
+  }
+}

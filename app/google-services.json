@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1032408621351",
+    "firebase_url": "https://lakeshore-ads-control.firebaseio.com",
+    "project_id": "lakeshore-ads-control",
+    "storage_bucket": "lakeshore-ads-control.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032408621351:android:2030d022b0f6bf28",
+        "android_client_info": {
+          "package_name": "com.dleague.lakeshoreimporters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032408621351-k2sa27laflchdj41h8a4suo37ffuptlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmH9VAP82vvbkgt8onJQnetc8eBRxabb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032408621351-k2sa27laflchdj41h8a4suo37ffuptlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

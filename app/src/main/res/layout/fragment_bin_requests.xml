@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_12dp">
+
+        <ImageView
+            android:id="@+id/iv_bin_req_1"
+            android:layout_height="164dp"
+            android:layout_margin="@dimen/margin_8"
+            android:layout_width="wrap_content"
+            android:src="@drawable/bin_req_1" />
+
+        <View
+            android:background="@color/black"
+            android:layout_height=".5dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_width="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_bin_req_2"
+            android:layout_height="164dp"
+            android:layout_margin="@dimen/margin_8"
+            android:layout_width="wrap_content"
+            android:src="@drawable/bin_req_2" />
+
+        <View
+            android:background="@color/black"
+            android:layout_height=".5dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_width="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_bin_req_3"
+            android:layout_height="164dp"
+            android:layout_margin="@dimen/margin_8"
+            android:layout_width="wrap_content"
+            android:src="@drawable/bin_req_3" />
+
+        <View
+            android:background="@color/black"
+            android:layout_height=".5dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_width="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_bin_req_4"
+            android:layout_height="164dp"
+            android:layout_margin="@dimen/margin_8"
+            android:layout_width="wrap_content"
+            android:src="@drawable/bin_req_4" />
+
+        <View
+            android:background="@color/black"
+            android:layout_height=".5dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_width="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_bin_req_5"
+            android:layout_height="164dp"
+            android:layout_margin="@dimen/margin_8"
+            android:layout_width="wrap_content"
+            android:src="@drawable/bin_req_5" />
+
+        <View
+            android:background="@color/black"
+            android:layout_height=".5dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_width="match_parent" />
+
+    </LinearLayout>
+
+</ScrollView>

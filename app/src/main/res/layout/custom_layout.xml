@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="50dp"
+    android:orientation="vertical"
+    android:background="@drawable/border_background">
+
+    <TextView
+        android:id="@+id/hintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_margin="9dp"
+        android:text="Enter Key"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/input_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_background"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:textSize="16dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/btn_c_cancle"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:background="@drawable/border_background"
+        android:text="Cancel"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/btn_c_done"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:background="@drawable/border_background"
+        android:text="Done"/>
+
+
+    </LinearLayout>
+</LinearLayout>

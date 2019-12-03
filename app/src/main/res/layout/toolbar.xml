@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/blue_gradiant_background"
+    app:titleTextColor="@color/white"
+    app:title="@string/app_name"
+    android:gravity="center"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18font"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_18dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cart"
+                android:paddingTop="@dimen/_6dp"
+                android:paddingEnd="@dimen/_8dp"/>
+
+            <TextView
+                android:id="@+id/iv_cart_items"
+                android:layout_alignRight="@+id/iv_cart"
+                android:layout_alignTop="@+id/iv_cart"
+                android:background="@drawable/rounded_backgroung_red"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:textSize="@dimen/_14font"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>

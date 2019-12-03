@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="44dp"
+        app:srcCompat="@drawable/logo" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/_12dp"
+        android:layout_marginLeft="@dimen/_12dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/et_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/et_background"
+            android:hint="First Name"
+            android:inputType="text"
+            android:layout_marginBottom="@dimen/_12dp"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_18dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/midGrey"
+            android:textSize="@dimen/_14font" />
+
+        <EditText
+            android:id="@+id/et_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/et_background"
+            android:layout_marginBottom="@dimen/_12dp"
+            android:hint="Last Name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_18dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/midGrey"
+            android:textSize="@dimen/_14font" />
+
+        <EditText
+            android:id="@+id/et_signup_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/et_background"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_18dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/midGrey"
+            android:textSize="@dimen/_14font" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signup_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_background"
+                android:drawablePadding="20dp"
+                android:hint="Password"
+                android:paddingEnd="@dimen/_18dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="@dimen/_18dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/midGrey"
+                android:textSize="@dimen/_14font" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_background"
+            android:text="Create Account"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:elevation="@dimen/_2dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18font" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_already_registered"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="@string/already_have_account"
+        android:textColor="@color/logoGrey"
+        android:textSize="@dimen/_16font" />
+</RelativeLayout>

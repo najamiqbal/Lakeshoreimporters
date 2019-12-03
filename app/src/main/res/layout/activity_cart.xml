@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/cart_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/themeLightBlue"
+        android:gravity="center"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/my_cart"
+        app:titleTextColor="@color/white" />
+
+    <ViewFlipper
+        android:id="@+id/viewflipper_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.CartActivity">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_cart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_above="@+id/layout_comment"
+                android:padding="@dimen/margin_18"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout_footer"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_pd_products_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="Total Products 0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12font" />
+
+
+                    <TextView
+                        android:id="@+id/tv_pd_total_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="$0.00"
+                        android:textColor="@color/themeBlue"
+                        android:textSize="@dimen/_14font" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_pd_continue_shopping"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".4"
+                    android:background="@color/midGrey"
+                    android:gravity="center"
+                    android:text="Continue Shopping"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14font"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_pd_checkout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:background="@color/themeLightBlue"
+                    android:gravity="center"
+                    android:text="CheckOut"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/layout_footer"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_8dp"
+                    android:text="*Using Default address for shipping."/>
+
+                <EditText
+                    android:id="@+id/et_cart_order_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="94dp"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginTop="@dimen/margin_4"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:background="@drawable/et_background_normal_with_border"
+                    android:gravity="top"
+                    android:hint="Order Notes"
+                    android:maxLines="3"
+                    android:padding="@dimen/margin_12"
+                    android:textSize="@dimen/_14font" />
+
+                <CheckBox
+                    android:id="@+id/cb1_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_4"
+                    android:text="@string/i_understand_refund" />
+
+                <CheckBox
+                    android:id="@+id/cb2_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:paddingTop="@dimen/margin_4"
+                    android:text="@string/i_understand_importer" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/recyclerview_cart_address"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_above="@+id/btn_continue_to_payment"-->
+                <!--android:padding="@dimen/margin_18"-->
+                <!--app:layoutManager="android.support.v7.widget.LinearLayoutManager" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_continue_to_payment"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_margin="@dimen/margin_8"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textSize="@dimen/_16font"-->
+                <!--android:background="@drawable/et_background_normal_with_border"-->
+                <!--android:text="Continue to payment"/>-->
+
+        <!--</RelativeLayout>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Cart is Empty!"
+            android:textSize="@dimen/_16font" />
+
+    </ViewFlipper>
+
+</LinearLayout>

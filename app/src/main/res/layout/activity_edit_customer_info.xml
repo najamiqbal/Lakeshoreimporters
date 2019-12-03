@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditCustomerInfo">
+
+    <include layout="@layout/title_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/layout_ec_firstname"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="@dimen/margin_4">
+
+        <EditText
+            android:id="@+id/et_ec_firstname"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight=".85"
+            android:ellipsize="end"
+            android:inputType="text"
+            android:maxLines="1"
+            android:enabled="false"
+            android:padding="@dimen/margin_4"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_ec_firstname"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight=".15"
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:src="@drawable/ic_edit"
+            android:padding="@dimen/margin_8"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_ec_lastname"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="@dimen/margin_4">
+
+        <EditText
+            android:id="@+id/et_ec_lastname"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight=".85"
+            android:ellipsize="end"
+            android:inputType="text"
+            android:maxLines="1"
+            android:enabled="false"
+            android:padding="@dimen/margin_4"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_ec_lastname"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight=".15"
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:src="@drawable/ic_edit"
+            android:padding="@dimen/margin_8"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_email"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="@dimen/margin_4">
+
+        <EditText
+            android:id="@+id/et_ec_email"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight=".85"
+            android:ellipsize="end"
+            android:inputType="text"
+            android:maxLines="1"
+            android:enabled="false"
+            android:padding="@dimen/margin_4"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_ec_email"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight=".15"
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:src="@drawable/ic_edit"
+            android:padding="@dimen/margin_8"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_phone"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="@dimen/margin_4">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp_reg"
+            android:layout_width="0dp"
+            android:layout_weight=".3"
+            android:layout_height="44dp"
+            android:elevation="@dimen/margin_2"
+            app:ccpDialog_textColor="@color/black"
+            app:ccp_textSize="@dimen/_14font"
+            app:ccp_showFullName="true"
+            app:ccp_showPhoneCode="false"
+            app:ccp_showNameCode="false"
+            android:gravity="center"
+            android:background="@drawable/et_background_normal_with_border"
+            android:layout_marginEnd="@dimen/margin_4"
+            app:ccp_areaCodeDetectedCountry="true"
+            app:ccpDialog_showNameCode="false"
+            app:ccpDialog_showPhoneCode="true"
+            app:ccp_defaultNameCode="CA"
+            app:ccp_countryPreference="CA,US"/>
+
+        <EditText
+            android:id="@+id/et_ec_phone"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight=".55"
+            android:ellipsize="end"
+            android:inputType="number"
+            android:maxLines="1"
+            android:enabled="false"
+            android:padding="@dimen/margin_4"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/iv_ec_phone"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight=".15"
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:src="@drawable/ic_edit"
+            android:padding="@dimen/margin_8"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ec_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_margin="@dimen/margin_8"
+        android:textSize="@dimen/_16font"
+        android:textColor="@color/white"/>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_privacy_policies"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:padding="@dimen/_18dp"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/margin_18"
+        android:background="@drawable/square_border_bg"
+        android:textSize="@dimen/_16font"/>
+
+    <Button
+        android:id="@+id/btn_return_n_refund_policies"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/retrun_refund"
+        android:padding="@dimen/_18dp"
+        android:layout_marginBottom="@dimen/_18dp"
+        android:textAllCaps="false"
+        android:background="@drawable/square_border_bg"
+        android:textSize="@dimen/_16font"/>
+
+    <Button
+        android:id="@+id/btn_libility_policies"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="Liability Policy"
+        android:padding="@dimen/_18dp"
+        android:textAllCaps="false"
+        android:background="@drawable/square_border_bg"
+        android:textSize="@dimen/_16font"/>
+
+</LinearLayout>

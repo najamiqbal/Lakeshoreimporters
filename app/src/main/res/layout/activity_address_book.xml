@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MyOrdersActivity">
+
+    <include layout="@layout/title_toolbar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_simple"
+        android:layout_above="@+id/layout_add_address"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:padding="@dimen/margin_8"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/layout_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/_18dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_add_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_plus"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

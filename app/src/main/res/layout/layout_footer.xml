@@ -1,0 +1,64 @@
+<LinearLayout
+    android:id="@+id/layout_footer"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight=".3"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_pd_products_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12font"
+            android:gravity="center"
+            android:text="Total Products 0"/>
+
+
+        <TextView
+            android:id="@+id/tv_pd_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/themeBlue"
+            android:textSize="@dimen/_14font"
+            android:gravity="center"
+            android:text="$0.00"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_pd_continue_shopping"
+        android:layout_width="0dp"
+        android:layout_weight=".4"
+        android:layout_height="match_parent"
+        android:background="@color/midGrey"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14font"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Continue Shopping"/>
+
+    <TextView
+        android:id="@+id/tv_pd_checkout"
+        android:layout_width="0dp"
+        android:layout_weight=".3"
+        android:layout_height="match_parent"
+        android:background="@color/themeLightBlue"
+        android:textColor="@color/white"
+        android:text="CheckOut"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_simple"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/themeLightBlue"
+    app:titleTextColor="@color/white"
+    app:title="@string/app_name"
+    android:gravity="center"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbar_title_simple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18font"/>
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>

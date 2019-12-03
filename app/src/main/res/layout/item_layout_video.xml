@@ -1,0 +1,55 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_4dp"
+    android:layout_margin="@dimen/_12dp">
+
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/margin_4"
+        android:textSize="@dimen/_16font"/>
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/player_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="4dp"
+        android:background="@drawable/border_background"
+        card_view:cardBackgroundColor="@android:color/black"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true">
+
+
+        <com.google.android.youtube.player.YouTubeThumbnailView
+            android:id="@+id/youtube_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:visibility="visible"/>
+
+        <RelativeLayout android:id="@+id/relativeLayout_over_youtube_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/transparent"
+            android:visibility="visible">
+
+            <ImageView android:id="@+id/btnYoutube_player"
+                android:layout_width="64dp"
+                android:layout_height="44dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_play"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

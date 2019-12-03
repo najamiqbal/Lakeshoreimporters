@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_18">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/warrenty_claim"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20font"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/warranty_claim_info"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_16font" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="First Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_firstname"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="Last Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_lastname"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_email"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="textEmailAddress" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="@string/order_number"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_order_number"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="@string/order_description"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_order_detail"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="@string/order_defect"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_defect"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="@string/recommendations"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16font" />
+
+                <EditText
+                    android:id="@+id/et_wc_recommendation"
+                    style="@style/EditTextNormalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:inputType="text" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb1" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb2" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb3" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:paddingStart="@dimen/margin_8"
+                    android:text="Was a special request approved by the Lakeshore Staff? We will notify you if this is the case, if not, please put NO*"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_16font" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb5" />
+
+
+                <CheckBox
+                    android:id="@+id/cb_wc_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/wc_cb6" />
+
+                <CheckBox
+                    android:id="@+id/cb_wc_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:gravity="top"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/terms_n_conditions" />
+
+                <ImageView
+                    android:id="@+id/iv_wc_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_4"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/btn_wc_upload_file"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    android:background="@drawable/btn_background"
+                    android:elevation="@dimen/_2dp"
+                    android:gravity="center"
+                    android:text="Upload Image"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14font"/>
+
+
+                <Button
+                    android:id="@+id/btn_wc_submit"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="44dp"
+                    android:background="@drawable/btn_background"
+                    android:elevation="@dimen/_2dp"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18font"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

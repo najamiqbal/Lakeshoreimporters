@@ -1,0 +1,401 @@
+query getProducts($first: Int!) {
+    products(first: 1) {
+        edges {
+            node {
+                collections(first: 1) {
+                    edges {
+                        node {
+                            products(first: $first) {
+                                edges {
+                                    cursor
+                                    node {
+                                        title
+                                        description
+                                        descriptionHtml
+                                        availableForSale
+                                        variants(first:1){
+                                            edges{
+                                                cursor
+                                                node{
+                                                    availableForSale
+                                                    title
+                                                    id
+                                                }
+                                            }
+                                        }
+                                        priceRange{
+                                            maxVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                            minVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                        }
+                                        images(first: 10){
+                                            edges{
+                                                node{
+                                                    originalSrc
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+        }
+    }
+}
+
+query getNextProducts($first: Int!, $after: String!) {
+    products(first: 1) {
+        edges {
+            node {
+                collections(first: 1) {
+                    edges {
+                        node {
+                            products(first: $first, after: $after) {
+                                edges {
+                                    cursor
+                                    node {
+                                        title
+                                        description
+                                        descriptionHtml
+                                        availableForSale
+                                        variants(first:1){
+                                            edges{
+                                                cursor
+                                                node{
+                                                    availableForSale
+                                                    title
+                                                    id
+                                                }
+                                            }
+                                        }
+                                        priceRange{
+                                            maxVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                            minVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                        }
+                                        images(first: 10){
+                                            edges{
+                                                node{
+                                                    originalSrc
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+        }
+    }
+}
+
+query getCollectionsById($handle: String!, $productsCount: Int!) {
+    collectionByHandle(handle: $handle) {
+        id
+        title
+        handle
+        products(first: $productsCount) {
+            edges {
+                cursor
+                node {
+                    id
+                    title
+                    handle
+                    description
+                    descriptionHtml
+                    availableForSale
+                    variants(first:1){
+                        edges{
+                            cursor
+                            node{
+                                availableForSale
+                                title
+                                id
+                            }
+                        }
+                    }
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    images(first: 5) {
+                        edges {
+                            node {
+                                originalSrc
+                            }
+                        }
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+            }
+        }
+    }
+}
+
+query getCollectionsByIdNext($handle: String!, $productsCount: Int!, $after: String!) {
+    collectionByHandle(handle: $handle) {
+        id
+        title
+        handle
+        products(first: $productsCount, after: $after) {
+            edges {
+                cursor
+                node {
+                    id
+                    title
+                    handle
+                    description
+                    descriptionHtml
+                    availableForSale
+                    variants(first:1){
+                        edges{
+                            cursor
+                            node{
+                                availableForSale
+                                title
+                                id
+                            }
+                        }
+                    }
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    images(first: 5) {
+                        edges {
+                            node {
+                                originalSrc
+                            }
+                        }
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+            }
+        }
+    }
+}
+
+query getCustomerAddresses($id: String!) {
+    customer(customerAccessToken: $id) {
+        displayName
+        email
+        firstName
+        lastName
+        phone
+        defaultAddress {
+            id
+            address1
+            address2
+            city
+            company
+            country
+            countryCodeV2
+            firstName
+            formattedArea
+            formatted
+            lastName
+            name
+            phone
+            province
+            provinceCode
+            zip
+        }
+        addresses(first: 10)  {
+            edges{
+                cursor
+                node {
+                    id
+                    address1
+                    address2
+                    city
+                    company
+                    country
+                    countryCodeV2
+                    firstName
+                    formattedArea
+                    formatted
+                    lastName
+                    name
+                    phone
+                    province
+                    provinceCode
+                    zip
+                }
+            }
+        }
+    }
+}
+
+query getCustomer($id: String!) {
+    customer(customerAccessToken: $id) {
+        id
+        firstName
+        lastName
+        email
+        phone
+        displayName
+    }
+}
+
+query getProductByHandle($handle: String!){
+    productByHandle(handle: $handle) {
+        id
+        title
+        description
+        descriptionHtml
+        priceRange{
+            maxVariantPrice{
+                amount
+                currencyCode
+            }
+            minVariantPrice{
+                amount
+                currencyCode
+            }
+        }
+        images(first:10){
+            edges{
+                cursor
+                node{
+                    id
+                    originalSrc
+                }
+            }
+        }
+        variants(first: 10){
+            edges{
+                cursor
+                node{
+                    image {
+                        id
+                        originalSrc
+                    }
+                    availableForSale
+                    id
+                    price
+                    title
+                    selectedOptions{
+                        name
+                        value
+                    }
+                }
+            }
+        }
+    }
+}
+
+query getLastOrders($id: String!) {
+    customer(customerAccessToken: $id) {
+        displayName
+        phone
+        orders(first: 25) {
+            edges {
+                cursor
+                node {
+                    id
+                    email
+                    name
+                    phone
+                    orderNumber
+                    processedAt
+                    statusUrl
+                    totalPrice
+                    lineItems (first: 20){
+                        edges {
+                            cursor
+                            node {
+                                title
+                                quantity
+                                variant{
+                                    id
+                                    product{
+                                        id
+                                        title
+                                        description
+                                        priceRange{
+                                            maxVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                            minVariantPrice{
+                                                amount
+                                                currencyCode
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        pageInfo {
+                            hasNextPage
+                            hasPreviousPage
+                        }
+                    }
+                    shippingAddress {
+                        address1
+                        address2
+                        city
+                        company
+                        country
+                        firstName
+                        formattedArea
+                        formatted
+                        countryCodeV2
+                        id
+                        lastName
+                        name
+                        phone
+                        province
+                        provinceCode
+                        zip
+                    }
+                }
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+            }
+        }
+    }
+}

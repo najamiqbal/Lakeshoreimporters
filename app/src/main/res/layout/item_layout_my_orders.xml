@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_12"
+    android:layout_margin="@dimen/margin_8"
+    android:elevation="@dimen/margin_2"
+    android:background="@drawable/border_background">
+
+    <TextView
+        android:id="@+id/tv_mo_order_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20font"
+        android:textStyle="bold"
+        android:text="Order 12313"
+        android:layout_marginBottom="@dimen/margin_4"/>
+
+    <TextView
+        android:id="@+id/tv_mo_order_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14font"
+        android:text="2 Jan 2019"
+        android:layout_marginBottom="@dimen/margin_4"/>
+
+    <TextView
+          android:id="@+id/tv_mo_order_arrival_date"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/_14font"
+          android:text="2 Jan 2019"
+          android:layout_marginBottom="@dimen/margin_4"/>
+
+    <TextView
+        android:id="@+id/tv_mo_order_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14font"
+        android:text="Shipping Address: asdasfsdffasfd"
+        android:layout_marginBottom="@dimen/margin_4"/>
+
+    <TextView
+        android:id="@+id/tv_mo_order_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_16font"
+        android:textStyle="bold"
+        android:text="2 Items Total:28$"
+        android:textColor="@color/themeBlue"
+        android:layout_marginBottom="@dimen/margin_8"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_my_order_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>
