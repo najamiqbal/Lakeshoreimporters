@@ -17,5 +17,9 @@
     <color name="offWhite">#99EEEDED</color>
     <color name="transparentGrey">#C9CACFD2</color>
     <color name="logoGrey">#336285</color>
+    <color name="orange">#F58E16</color>
+    <color name="blue">#0666AA</color>
+    <color name="green2">#39DA65</color>
+    <color name="purpole">#0BA062</color>
 
 </resources>

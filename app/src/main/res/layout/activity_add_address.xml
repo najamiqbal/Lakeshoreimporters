@@ -26,7 +26,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="First Name"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -43,7 +43,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Last Name"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -61,7 +61,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Company"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -78,7 +78,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Address 1"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -95,7 +95,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Address 2"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -112,7 +112,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="City"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -129,7 +129,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="State"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -146,7 +146,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Country"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -163,7 +163,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Postal/Zip Code"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText
@@ -180,7 +180,7 @@
                 android:layout_marginBottom="@dimen/margin_8"
                 android:paddingStart="@dimen/margin_8"
                 android:text="Phone"
-                android:textColor="@color/midGrey"
+                android:textColor="@color/themeBlue"
                 android:textSize="@dimen/_16font" />
 
             <EditText

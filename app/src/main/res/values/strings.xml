@@ -71,6 +71,8 @@ warranty policies, please visit the policy page.</string>
     <string name="faq_a10">In order to have your items placed in the bin, please fill out the form here. We are unable to process same day pickups.\n\nLakeshore Importers and any staff members involved have absolutely no responsibility for any damages, injuries, economic losses, social distress, death, misuse, theft, or lost items during the use of the Bin System, and or the use of the product. We are unable to guarantee the security of everyone’s order when using the Bin System. If you are not comfortable, and do not want to risk having your items lost or stolen, please use our designated pickup times.\n\nIf items are lost, or stolen, and a customer demands a refund, the refund will be kindly declined. If and when a chargeback occurs, a $50.00 plus GST penalty fee will be charged to the customer plus the cost of the stolen, or lost item. The total amount will be required to be paid in full, by cash, cheque, or e-transfer, within 1 week of invoice date.</string>
     <string name="terms_n_conditions">I understand the terms and conditions.</string>
     <string name="policies">Policies</string>
+    <string name="rateus">Rate Us</string>
+    <string name="feedback">FeedBack</string>
     <string name="seasonal">Seasonal Buy</string>
     <string name="electronics">Electronics</string>
     <string name="outdoor">Outdoor</string>
@@ -82,6 +84,7 @@ warranty policies, please visit the policy page.</string>
     <string name="weekly">Weekly Deals</string>
     <string name="alert">Notifications</string>
     <string name="category">Categories</string>
+    <string name="choose_email_client">Choose email client</string>
     <string name="retrun_refund"><![CDATA[Returns & Refunds Policy]]></string>
     <string name="sc_note">No History Yet\nGrab it now, tomorrow, it might be gone forever.</string>
     <string name="estimated_delivery_note">All items are expected to arrive on or before June 30th 2019. Due to limited circumstances, certain items may be delayed due to defects, weather, shipping, or unexpected problems.</string>

@@ -1,7 +1,11 @@
 package com.dleague.lakeshoreimporters.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -180,13 +184,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             selectItem(10);
         } else if (id == R.id.nav_logout) {
             logoutUser();
-        } else {
+        }else if (id == R.id.nav_rate_us) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getApplicationContext().getPackageName())));
+
+        }else if (id == R.id.nav_feedback) {
+            sendFeedback(MainActivity.this);
+        }
+        else {
             selectItem(0);
         }
         drawerLayout.closeDrawers();
         return true;
     }
 
+    public static void sendFeedback(Context context) {
+        String body = null;
+        try {
+            body = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+            body = "\nPlease write your feedback\n";
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"LakeshoreImporters@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        context.startActivity(Intent.createChooser(intent, context.getString(R.string.choose_email_client)));
+    }
     private void logoutUser() {
         AppSpace.sharedPref.writeValue(SESSION, "0");
         AppSpace.sharedPref.writeValue(CUSTOMER_ID, "0");

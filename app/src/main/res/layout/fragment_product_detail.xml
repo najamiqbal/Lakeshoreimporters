@@ -111,14 +111,14 @@
                     android:gravity="center"
                     app:auto_cycle="false" />
 
-                <ImageView
+            <!--    <ImageView
                     android:id="@+id/iv_pd_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/_18dp"
                     android:layout_marginTop="@dimen/_18dp"
-                    android:src="@drawable/ic_arrow_back_blue"/>
+                    android:src="@drawable/ic_arrow_back_blue"/>-->
 
             </RelativeLayout>
 

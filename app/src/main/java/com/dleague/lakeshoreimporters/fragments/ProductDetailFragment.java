@@ -183,10 +183,10 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         }
     }
 
-    @OnClick(R.id.iv_pd_back)
+/*    @OnClick(R.id.iv_pd_back)
     void setIvBack() {
         ((MainActivity) Objects.requireNonNull(getActivity())).onBackPressed();
-    }
+    }*/
 
     private void getExtras() {
         Bundle arguments = getArguments();

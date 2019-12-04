@@ -172,7 +172,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/center_tv"
         android:padding="@dimen/_6dp"
-        android:src="@drawable/brand_5">
+        android:src="@drawable/weekly">
 
     </ImageView>
 </RelativeLayout>

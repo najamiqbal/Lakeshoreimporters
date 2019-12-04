@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_margin="@dimen/margin_12"
         android:padding="@dimen/margin_4">
 
         <EditText
@@ -47,7 +47,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_margin="@dimen/margin_12"
         android:padding="@dimen/margin_4">
 
         <EditText
@@ -80,7 +80,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_margin="@dimen/margin_12"
         android:padding="@dimen/margin_4">
 
         <EditText
@@ -113,7 +113,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_margin="@dimen/margin_12"
         android:padding="@dimen/margin_4">
 
         <com.hbb20.CountryCodePicker
@@ -165,7 +165,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_margin="@dimen/margin_18"
         android:textSize="@dimen/_16font"
         android:textColor="@color/white"/>
 </LinearLayout>

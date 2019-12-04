@@ -59,9 +59,9 @@ public class ProfileFragment extends Fragment {
         startActivity(new Intent(getActivity(), EditCustomerInfo.class));
     }
 
-    @OnClick(R.id.layout_store_credit)void setStoreCredits(){
+/*    @OnClick(R.id.layout_store_credit)void setStoreCredits(){
         startActivity(new Intent(getActivity(), StoreCredits.class));
-    }
+    }*/
 
     @OnClick(R.id.layout_change_password)void setChangePassword(){
         if(AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0")){

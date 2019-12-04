@@ -299,7 +299,7 @@ public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClic
                 ((MainActivity) Objects.requireNonNull(getActivity())).launchFragment(28);
                 break;
             case R.id.about_img:
-                Toast.makeText(getContext(), "HELLO ABOUT", Toast.LENGTH_SHORT).show();
+                ((MainActivity) Objects.requireNonNull(getActivity())).launchFragment(5);
                 break;
 
         }
