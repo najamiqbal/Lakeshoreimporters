@@ -8,6 +8,8 @@
         android:maxSdkVersion="22" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -47,6 +49,7 @@
         <activity android:name=".activities.BinRequestForm" />
         <activity android:name=".activities.AddAddressActivity" />
         <activity android:name=".activities.MyOrdersActivity" />
+        <activity android:name=".fragments.NotificationFragment"/>
         <activity android:name=".activities.AddressBookActivity" />
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.SignUpActivity" />
@@ -61,6 +64,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Register the Alarm Receiver -->
+        <receiver android:name=".utils.AlarmReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

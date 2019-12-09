@@ -1,12 +1,15 @@
 package com.dleague.lakeshoreimporters.activities;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.dleague.lakeshoreimporters.GetLastOrdersQuery;
 import com.dleague.lakeshoreimporters.R;
 import com.dleague.lakeshoreimporters.dtos.ProductDTO;
 import com.dleague.lakeshoreimporters.fragments.AboutUsFragment;
@@ -48,9 +54,17 @@ import com.dleague.lakeshoreimporters.fragments.ToysAndGamesFragment;
 import com.dleague.lakeshoreimporters.fragments.WeeklyDeals;
 import com.dleague.lakeshoreimporters.httpcalls.HttpNetworkCall;
 import com.dleague.lakeshoreimporters.httpcalls.HttpResponseCallbacks;
+import com.dleague.lakeshoreimporters.networkcalls.NetworkCallbacks;
+import com.dleague.lakeshoreimporters.networkcalls.NetworkCalls;
+import com.dleague.lakeshoreimporters.utils.AlarmReceiver;
+import com.dleague.lakeshoreimporters.utils.NotificationModel;
+import com.dleague.lakeshoreimporters.utils.NotificationScheduler;
+import com.dleague.lakeshoreimporters.utils.SharedPrefManager;
+import com.dleague.lakeshoreimporters.utils.Validations;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -62,9 +76,10 @@ import static com.dleague.lakeshoreimporters.utils.Constants.CART_COUNT;
 import static com.dleague.lakeshoreimporters.utils.Constants.CUSTOMER_EMAIL;
 import static com.dleague.lakeshoreimporters.utils.Constants.CUSTOMER_ID;
 import static com.dleague.lakeshoreimporters.utils.Constants.CUSTOMER_NAME;
+import static com.dleague.lakeshoreimporters.utils.Constants.LAST_ORDERS;
 import static com.dleague.lakeshoreimporters.utils.Constants.SESSION;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HttpResponseCallbacks,View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, NetworkCallbacks, HttpResponseCallbacks, View.OnClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -83,9 +98,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FragmentManager fragmentManager;
     private List<String> tagsList;
     private Fragment fragment;
+    private NetworkCalls networkCalls;
     private String Fragment_TAG;
-    Button btn_me,btn_home,btn_alert,btn_category;
+    Button btn_me, btn_home, btn_alert, btn_category;
     private HttpNetworkCall httpNetworkCall;
+    private List<GetLastOrdersQuery.Edge> lastOrdersList;
+    ArrayList<NotificationModel> DaysModelsList;
+    List<NotificationModel> daysModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +118,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AppSpace.sharedPref.readValue(CUSTOMER_EMAIL, "0").equals("0")) {
             new CustomerIdTask().execute();
         }
+        getOrders();
+    }
+    //for notification work
+
+    private void getOrders() {
+        networkCalls.getLastOrders(AppSpace.sharedPref.readValue(SESSION, "0"));
     }
 
     @Override
@@ -125,10 +150,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initView() {
-        btn_home=findViewById(R.id.btn_home);
-        btn_category=findViewById(R.id.btn_category);
-        btn_alert=findViewById(R.id.btn_alert);
-        btn_me=findViewById(R.id.btn_me);
+        btn_home = findViewById(R.id.btn_home);
+        btn_category = findViewById(R.id.btn_category);
+        btn_alert = findViewById(R.id.btn_alert);
+        btn_me = findViewById(R.id.btn_me);
         btn_alert.setOnClickListener(this);
         btn_category.setOnClickListener(this);
         btn_home.setOnClickListener(this);
@@ -140,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         };
+
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -148,7 +174,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initObj() {
         tagsList = new ArrayList<>();
         httpNetworkCall = new HttpNetworkCall(this, this);
+        networkCalls = new NetworkCalls(this, this);
         fragmentManager = getSupportFragmentManager();
+        lastOrdersList = new ArrayList<>();
+        DaysModelsList = new ArrayList<NotificationModel>();
         selectItem(0);
     }
 
@@ -184,13 +213,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             selectItem(10);
         } else if (id == R.id.nav_logout) {
             logoutUser();
-        }else if (id == R.id.nav_rate_us) {
+        } else if (id == R.id.nav_rate_us) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getApplicationContext().getPackageName())));
 
-        }else if (id == R.id.nav_feedback) {
+        } else if (id == R.id.nav_feedback) {
             sendFeedback(MainActivity.this);
-        }
-        else {
+        } else {
             selectItem(0);
         }
         drawerLayout.closeDrawers();
@@ -211,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra(Intent.EXTRA_TEXT, body);
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.choose_email_client)));
     }
+
     private void logoutUser() {
         AppSpace.sharedPref.writeValue(SESSION, "0");
         AppSpace.sharedPref.writeValue(CUSTOMER_ID, "0");
@@ -365,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_home:
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 selectItem(0);
@@ -375,14 +404,113 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 selectItem(29);
                 break;
             case R.id.btn_alert:
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                selectItem(30);
+                startActivity(new Intent(MainActivity.this, NotificationFragment.class));
                 break;
             case R.id.btn_me:
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 selectItem(8);
                 break;
         }
+    }
+
+    @Override
+    public void onPreServiceCall() {
+
+    }
+
+    @Override
+    public void onSuccess(int responseCode, Response response) {
+        if (responseCode == LAST_ORDERS) {
+            handleCalbackResponse(response);
+        }
+    }
+
+    private void handleCalbackResponse(Response response) {
+        if (Validations.isObjectNotEmptyAndNull(response)) {
+            GetLastOrdersQuery.Data data = (GetLastOrdersQuery.Data) response.data();
+            if (Validations.isObjectNotEmptyAndNull(data)) {
+                lastOrdersList = data.customer().orders().edges();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SrtNotification();
+                       // SharedPrefManager.getInstance(MainActivity.this).RemoveDays();
+                        // Log.d("HELLO ORDERS","LIST"+lastOrdersList.size());
+                        //Toast.makeText(MainActivity.this, "" + lastOrdersList.size(), Toast.LENGTH_SHORT).show();
+                        //myOrdersAdapter = new MyOrdersAdapter(MainActivity.this, lastOrdersList, MainActivity.this);
+                        //recyclerView.setAdapter(myOrdersAdapter);
+                        //myOrdersAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }
+    }
+
+    private void SrtNotification() {
+
+        // SharedPrefManager.getInstance(MainActivity.this).RemoveDays();
+        for (int i = 0; i < lastOrdersList.size(); i++) {
+            Boolean exists = false;
+            String order = lastOrdersList.get(i).node().name();
+            daysModel = SharedPrefManager.getInstance(MainActivity.this).getdays();
+            Log.d("HELLO ORDERS y", "ORDERS LIST" + order);
+            if (daysModel!=null) {
+
+                for (int j = 0; j < daysModel.size(); j++) {
+                    Log.d("HELLO ORDERS n", "ORDERS LIST" + daysModel.get(j).getDay());
+                    if (TextUtils.equals(order, daysModel.get(j).getDay())) {
+                        Log.d("HELLO ORDERS1", "TUUUN FAIL");
+                        exists = true;
+                        break;
+                    }
+//                     else {
+//                        Log.d("HELLO ORDERS2", "TUUN YESSSSS");
+//                        NotificationModel model = new NotificationModel();
+//                        model.setDay(order);
+//                        DaysModelsList.add(model);
+//                        if (SharedPrefManager.getInstance(MainActivity.this).addDaysToPref(DaysModelsList)) {
+//                            Log.d("MealPlan", "Add to Pref");
+//                        }
+//                        break;
+//                    }
+                }
+                if(!exists){
+                    Log.i("HELLO ORDER","Notification generated");
+                        NotificationModel model = new NotificationModel();
+                        model.setDay(order);
+                        DaysModelsList.add(model);
+                        if (SharedPrefManager.getInstance(MainActivity.this).addDaysToPref(DaysModelsList)) {
+                            Log.d("MealPlan", "Add to Pref");
+                            Calendar c = Calendar.getInstance();
+                            int Hr24=c.get(Calendar.HOUR_OF_DAY);
+                            int Min=c.get(Calendar.MINUTE);
+                            NotificationScheduler.setReminder(MainActivity.this, AlarmReceiver.class, Hr24, Min+1);
+                        }
+
+                }
+            }else {
+                NotificationModel model = new NotificationModel();
+                model.setDay(order);
+                DaysModelsList.add(model);
+                Log.d("HELLO ORDERS3", "LIST" + order);
+                if (SharedPrefManager.getInstance(MainActivity.this).addDaysToPref(DaysModelsList)) {
+                    Calendar c = Calendar.getInstance();
+                    int Hr24=c.get(Calendar.HOUR_OF_DAY);
+                    int Min=c.get(Calendar.MINUTE);
+                    Log.d("MealPlan", "Add to Pref"+Hr24+"  UFFF  "+Min);
+                    NotificationScheduler.setReminder(MainActivity.this, AlarmReceiver.class, Hr24, Min+1);
+                }
+            }
+
+
+
+
+        }
+    }
+
+    @Override
+    public void onFailure(int responseCode, ApolloException exception) {
+
     }
 
     public class CustomerIdTask extends AsyncTask<Void, String, Void> {

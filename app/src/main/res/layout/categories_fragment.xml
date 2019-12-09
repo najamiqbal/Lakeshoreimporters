@@ -29,7 +29,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/btn_boost"
+                        android:id="@+id/btn1"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
@@ -39,7 +39,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_facebook" />
                     </RelativeLayout>
 
                     <TextView
@@ -61,17 +61,17 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/btn_cpu_cooler"
+                        android:id="@+id/btn2"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_cpu">
+                        android:background="@drawable/bg_booster">
 
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_extrabuy" />
                     </RelativeLayout>
 
                     <TextView
@@ -104,17 +104,17 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/btnJunk"
+                        android:id="@+id/btn3"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_junk">
+                        android:background="@drawable/bg_cpu">
 
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_season" />
                     </RelativeLayout>
 
                     <TextView
@@ -136,17 +136,17 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/btnBattery"
+                        android:id="@+id/btn4"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_battery">
+                        android:background="@drawable/bg_junk">
 
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_electronics" />
                     </RelativeLayout>
 
                     <TextView
@@ -183,13 +183,13 @@
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_junk">
+                        android:background="@drawable/bg_booster">
 
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_outdoor" />
                     </RelativeLayout>
 
                     <TextView
@@ -221,7 +221,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_jewelry" />
                     </RelativeLayout>
 
                     <TextView
@@ -262,7 +262,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_kitchen" />
                     </RelativeLayout>
 
                     <TextView
@@ -294,7 +294,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_clothes" />
                     </RelativeLayout>
 
                     <TextView
@@ -336,7 +336,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_beauty" />
                     </RelativeLayout>
 
                     <TextView
@@ -368,7 +368,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_001_rating" />
+                            android:src="@drawable/ic_toys" />
                     </RelativeLayout>
 
                     <TextView
