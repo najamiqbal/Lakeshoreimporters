@@ -371,6 +371,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
                     slider.addSlider(sliderView);
                 }
                 slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+                slider.setPresetTransformer("ZoomIn");
                 tvProductName.setText(productDTO.getProductName());
                 if (productDTO.getProductPriceMax().equals(productDTO.getProductPriceMin())) {
                     displayPrice = "$" + productDTO.getProductPriceMax();

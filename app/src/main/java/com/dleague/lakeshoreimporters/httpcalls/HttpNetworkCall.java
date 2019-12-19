@@ -1,7 +1,9 @@
 package com.dleague.lakeshoreimporters.httpcalls;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.dleague.lakeshoreimporters.activities.AppSpace;
 import com.dleague.lakeshoreimporters.dtos.BinReqDTO;
@@ -68,18 +70,26 @@ public class HttpNetworkCall {
     }
 
     public void getCustomerId(String email) {
+//        Toast.makeText(context, ""+email, Toast.LENGTH_SHORT).show();
+        Log.d("STORE USER","STORE USER"+email);
         OkHttpClient client = new OkHttpClient();
-        String baseUrl = "https://lakeshore-importers.myshopify.com/admin/customers/search.json?";
+        String baseUrl = "https://lakeshore-importers.myshopify.com/admin/api/2019-10/customers/search.json?";
         HttpUrl.Builder httpBuider = HttpUrl.parse(baseUrl).newBuilder();
-        httpBuider.addQueryParameter("query", "email:" + email);
+        httpBuider.addQueryParameter("query", email);
         Request request = new Request.Builder().url(httpBuider.build()).addHeader(HttpHeaders.AUTHORIZATION, credentials).build();
+        Log.d("STORE USER","STORE USER"+request);
         try (okhttp3.Response response = client.newCall(request).execute()) {
             String data = response.body().string();
-            Gson gson = new Gson();
-            CustomerDTO object = gson.fromJson(data, CustomerDTO.class);
-            AppSpace.sharedPref.writeValue(CUSTOMER_ID, String.valueOf(object.customers.get(0).id));
-            AppSpace.sharedPref.writeValue(CUSTOMER_EMAIL, String.valueOf(object.customers.get(0).email));
-            AppSpace.sharedPref.writeValue(CUSTOMER_NAME, String.valueOf(object.customers.get(0).firstName + " " + object.customers.get(0).lastName));
+            Log.d("STORE USER","STORE USER"+data);
+                Gson gson = new Gson();
+                CustomerDTO object = gson.fromJson(data, CustomerDTO.class);
+                Log.d("STORE USER","STORE USER"+object.customers.size());
+            if (TextUtils.equals(String.valueOf(object.customers.size()),"1")){
+                AppSpace.sharedPref.writeValue(CUSTOMER_ID, String.valueOf(object.customers.get(0).id));
+                AppSpace.sharedPref.writeValue(CUSTOMER_EMAIL, String.valueOf(object.customers.get(0).email));
+                AppSpace.sharedPref.writeValue(CUSTOMER_NAME, String.valueOf(object.customers.get(0).firstName + " " + object.customers.get(0).lastName));
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,7 +98,7 @@ public class HttpNetworkCall {
 
     public void getCustomerCredit(String customerId) {
         OkHttpClient client = new OkHttpClient();
-        String baseUrl = "https://app.getflits.com/api/1/250/" + customerId + "/credit/get_credit?token=8be4cd7329747d6c206eda522e05e6a6";
+        String baseUrl = "https://app.getflits.com/api/1/250/" + customerId + "/credit/get_credit?token=a88e3ae968399d2e2f8fa266cb8ba652";
         Request request = new Request.Builder().url(baseUrl).build();
         try (okhttp3.Response response = client.newCall(request).execute()) {
             String data = response.body().string();
@@ -105,7 +115,7 @@ public class HttpNetworkCall {
         OkHttpClient client = new OkHttpClient();
         String baseUrl = "https://app.getflits.com/api/1/250/" + customerId + "/credit/get_spent_rules";
         RequestBody body = new FormBody.Builder()
-                .add("token", "8be4cd7329747d6c206eda522e05e6a6")
+                .add("token", "a88e3ae968399d2e2f8fa266cb8ba652")
                 .add("cart", cartID)
                 .build();
 
@@ -123,7 +133,7 @@ public class HttpNetworkCall {
 
     public void applySpentRule(String customerId, String cartID, String spentRuleId, String cartData) {
         OkHttpClient client = new OkHttpClient();
-        String baseUrl = "https://app.getflits.com/api/1/250/" + customerId + "/credit/apply_credit?token=8be4cd7329747d6c206eda522e05e6a6";
+        String baseUrl = "https://app.getflits.com/api/1/250/" + customerId + "/credit/apply_credit?token=a88e3ae968399d2e2f8fa266cb8ba652";
         RequestBody body = new FormBody.Builder()
                 .add("data", cartData)
                 .add("spent_rule_id", spentRuleId)

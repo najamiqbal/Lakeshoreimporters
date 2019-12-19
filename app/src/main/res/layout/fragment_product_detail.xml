@@ -62,12 +62,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/themeLightBlue"
-                android:drawableStart="@drawable/ic_cart"
+                android:drawableStart="@drawable/ic_bag"
                 android:drawablePadding="@dimen/_4dp"
                 android:drawableTint="@color/black"
                 android:gravity="center"
                 android:padding="@dimen/_8dp"
-                android:text="Add to cart"
+                android:text="Add to bag"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18font" />
 

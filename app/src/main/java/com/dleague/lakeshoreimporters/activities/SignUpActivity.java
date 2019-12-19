@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
@@ -57,6 +58,7 @@ public class SignUpActivity extends AppCompatActivity implements NetworkCallback
         HelperMethods.hideKeyboard(this);
         if(fieldsValidation()){
             email = etEmail.getText().toString();
+            //Toast.makeText(this, ""+email, Toast.LENGTH_SHORT).show();
             UserDTO userDTO = new UserDTO(1L,etFirstName.getText().toString(), etLastName.getText().toString(),
                     etEmail.getText().toString(), etPassword.getText().toString());
             createUser(userDTO);

@@ -3,81 +3,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+
 <HorizontalScrollView
     android:id="@+id/top_categories"
     android:layout_width="wrap_content"
-    android:layout_height="100dp"
+    android:layout_height="140dp"
+    android:layout_below="@id/about_img"
     android:scrollbarAlwaysDrawHorizontalTrack="true"
     >
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:padding="@dimen/_4dp"
+        android:layout_height="140dp"
+        android:padding="@dimen/_2dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv1"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
             android:layout_margin="@dimen/_2dp"
-            android:text="Facebook Buys"
+            android:text="Weekly Deals"
+            android:textColor="@color/black"
             android:fontFamily="@font/robotoblack"
-            android:background="@drawable/et_background_normal_with_border"
+            android:background="@drawable/facebookbuys"
             android:textAlignment="center">
 
         </TextView>
 
         <TextView
-            android:id="@+id/tv2"
-            android:layout_margin="@dimen/_2dp"
-            android:layout_width="90dp"
+            android:id="@+id/tv9"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:padding="@dimen/_4dp"
+            android:layout_margin="@dimen/_2dp"
+            android:background="@drawable/beauty"
             android:fontFamily="@font/robotoblack"
-            android:background="@drawable/et_background_normal_with_border"
-            android:text="Extra Extra"
-            android:textAlignment="center">
+            android:gravity="bottom"
+            android:padding="@dimen/_4dp"
+            android:text="Beauty"
+            android:textAlignment="center"
+            android:textColor="@color/black">
 
         </TextView>
+
 
         <TextView
             android:id="@+id/tv3"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_2dp"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
+            android:textColor="@color/black"
             android:text="Seasonal"
             android:fontFamily="@font/robotoblack"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
+            android:background="@drawable/seasonal"
+            android:textAlignment="center">
 
         </TextView>
 
         <TextView
             android:id="@+id/tv4"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
             android:layout_margin="@dimen/_2dp"
             android:text="Electronics"
+            android:textColor="@color/black"
             android:fontFamily="@font/robotoblack"
-            android:background="@drawable/et_background_normal_with_border"
+            android:background="@drawable/electronics"
             android:textAlignment="center">
 
         </TextView>
 
         <TextView
             android:id="@+id/tv5"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
             android:layout_margin="@dimen/_2dp"
-            android:background="@drawable/et_background_normal_with_border"
+            android:textColor="@color/black"
+            android:background="@drawable/outdoor"
             android:text="Outdoor"
             android:fontFamily="@font/robotoblack"
             android:textAlignment="center">
@@ -86,93 +95,102 @@
 
         <TextView
             android:id="@+id/tv6"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
             android:layout_margin="@dimen/_2dp"
+            android:textColor="@color/black"
             android:text="Jewelry"
             android:fontFamily="@font/robotoblack"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
+            android:background="@drawable/jewellery"
+            android:textAlignment="center">
 
         </TextView>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_margin="@dimen/_2dp"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:padding="@dimen/_4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoblack"
+            android:background="@drawable/extea"
+            android:text="Extra Extra"
+            android:textAlignment="center">
 
+        </TextView>
         <TextView
             android:id="@+id/tv7"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
+            android:textColor="@color/black"
             android:text="Home Kitchen"
             android:fontFamily="@font/robotoblack"
             android:layout_margin="@dimen/_2dp"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
+            android:background="@drawable/kitchen"
+            android:textAlignment="center">
         </TextView>
         <TextView
             android:id="@+id/tv8"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
+            android:textColor="@color/black"
             android:text="Clothing"
             android:fontFamily="@font/robotoblack"
             android:layout_margin="@dimen/_2dp"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
+            android:background="@drawable/clothing"
+            android:textAlignment="center">
         </TextView>
-        <TextView
-            android:id="@+id/tv9"
-            android:layout_width="90dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:padding="@dimen/_4dp"
-            android:text="Beauty"
-            android:fontFamily="@font/robotoblack"
-            android:layout_margin="@dimen/_2dp"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
-        </TextView>
+
         <TextView
             android:id="@+id/tv10"
-            android:layout_width="90dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:gravity="bottom"
             android:padding="@dimen/_4dp"
             android:text="Toys Games"
+            android:textColor="@color/black"
             android:fontFamily="@font/robotoblack"
             android:layout_margin="@dimen/_2dp"
-            android:background="@drawable/et_background_normal_with_border"            android:textAlignment="center">
+            android:background="@drawable/toygames"
+            android:textAlignment="center">
         </TextView>
     </LinearLayout>
 </HorizontalScrollView>
+
     <ImageView
         android:id="@+id/about_img"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/center_tv"
-        android:layout_below="@id/top_categories"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
         android:src="@drawable/home_banner">
 
     </ImageView>
 
-    <TextView
+    <LinearLayout
         android:id="@+id/center_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Weekly Deals"
-        android:fontFamily="@font/robotoblack"
         android:textAlignment="center"
-        android:textColor="@color/themeBlue"
-        android:textSize="@dimen/_24font">
+        android:orientation="vertical"
+        android:textColor="@color/themeBlue">
 
-    </TextView>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/weekly_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/center_tv"
-        android:padding="@dimen/_6dp"
-        android:src="@drawable/weekly">
+        android:padding="@dimen/_2dp"
+        android:background="@drawable/dealofweek">
 
     </ImageView>
 </RelativeLayout>

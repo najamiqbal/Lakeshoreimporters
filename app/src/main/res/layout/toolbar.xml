@@ -38,7 +38,7 @@
                 android:id="@+id/iv_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_cart"
+                android:src="@drawable/ic_bag"
                 android:paddingTop="@dimen/_6dp"
                 android:paddingEnd="@dimen/_8dp"/>
 

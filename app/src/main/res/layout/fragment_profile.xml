@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/transparentGrey"
     android:padding="@dimen/_12dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -28,9 +34,136 @@
         android:layout_gravity="center_horizontal">
 
     </View>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ORDERS"
+    android:textSize="@dimen/_16font"
+    android:textAllCaps="true"
+    android:padding="5dp"
+    android:textColor="@color/black">
 
+</TextView>
     <LinearLayout
-        android:id="@+id/layout_edit_profile"
+        android:id="@+id/layout_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_4dp"
+        android:visibility="visible"
+        android:padding="@dimen/margin_12">
+        <Button
+            android:id="@+id/layout_my_orders"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Orders History"
+            android:textAllCaps="false"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_ordershistory"
+            android:layout_weight="1"
+            >
+
+        </Button>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:rotation="180"
+            android:background="@android:color/darker_gray"/>
+        <Button
+            android:id="@+id/my_bag"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Your Bag"
+            android:textAllCaps="false"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_bag"
+            android:layout_weight="1"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INFO"
+        android:textSize="@dimen/_16font"
+        android:textAllCaps="true"
+        android:padding="5dp"
+        android:textColor="@color/black">
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_4dp"
+        android:visibility="visible"
+        android:padding="@dimen/margin_12">
+        <Button
+            android:id="@+id/layout_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_person_black_24dp"
+            android:layout_weight="1"
+            >
+
+        </Button>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:rotation="180"
+            android:background="@android:color/darker_gray"/>
+        <Button
+            android:id="@+id/layout_address_book"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Address Book"
+            android:textAllCaps="false"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_add_location_black_24dp"
+            android:layout_weight="1"
+            >
+        </Button>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:rotation="180"
+            android:background="@android:color/darker_gray"/>
+        <Button
+            android:id="@+id/layout_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Change Pass"
+            android:textAllCaps="false"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_password"
+            android:layout_weight="1"
+            >
+        </Button>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUPPORT"
+        android:textSize="@dimen/_16font"
+        android:textAllCaps="true"
+        android:padding="5dp"
+        android:textColor="@color/black">
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/layout_policies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -44,12 +177,12 @@
             android:layout_weight=".8"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_16font"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawableLeft="@drawable/ic_policy"
             android:drawablePadding="@dimen/_12dp"
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Profile Info"/>
+            android:text="Policies"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -63,7 +196,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_my_orders"
+        android:id="@+id/layout_faq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -77,12 +210,12 @@
             android:layout_weight=".8"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_16font"
-            android:drawableLeft="@drawable/ic_shopping_cart_black_24dp"
+            android:drawableLeft="@drawable/ic_question_answer"
             android:drawablePadding="@dimen/_12dp"
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Order History"/>
+            android:text="FAQ"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -107,7 +240,7 @@
     </View>
 
     <LinearLayout
-        android:id="@+id/layout_address_book"
+        android:id="@+id/layout_warrenty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -120,12 +253,12 @@
             android:layout_weight=".8"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_16font"
-            android:drawableLeft="@drawable/ic_add_location_black_24dp"
+            android:drawableLeft="@drawable/ic_warranty"
             android:drawablePadding="@dimen/_12dp"
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Address Book"/>
+            android:text="Warrenty Claim"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -137,13 +270,14 @@
 
     </LinearLayout>
 
-  <!--  <LinearLayout
-        android:id="@+id/layout_store_credit"
+    <LinearLayout
+        android:id="@+id/layout_binrequests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/_4dp"
         android:visibility="visible"
+        android:background="@color/white"
         android:padding="@dimen/margin_12">
 
         <TextView
@@ -153,8 +287,10 @@
             android:textSize="@dimen/_16font"
             android:textColor="@color/black"
             android:gravity="center_vertical"
+            android:drawableLeft="@drawable/ic_bin_request"
+            android:drawablePadding="@dimen/_12dp"
             android:layout_gravity="center_vertical"
-            android:text="Store Credits"/>
+            android:text="Bin Requests"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -165,10 +301,10 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_next"/>
 
-    </LinearLayout>-->
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_change_password"
+        android:id="@+id/layout_rateus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -183,11 +319,11 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/_16font"
             android:textColor="@color/black"
-            android:drawableLeft="@drawable/ic_password"
+            android:drawableLeft="@drawable/ic_001_rating"
             android:drawablePadding="@dimen/_12dp"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Change Password"/>
+            android:text="Rate Us"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -209,5 +345,17 @@
         android:layout_marginTop="@dimen/_6dp"
         android:layout_gravity="center_horizontal">
     </View>-->
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/btn_background">
 
+    </Button>
 </LinearLayout>
+</ScrollView>

@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.github.firdausmaulan:GlideSlider:1.4.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation("com.squareup.okhttp3:okhttp:3.14.0")
     implementation('com.sendgrid:sendgrid-java:4.0.1') {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'

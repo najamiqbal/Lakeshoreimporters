@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -79,7 +80,7 @@ import static com.dleague.lakeshoreimporters.utils.Constants.CUSTOMER_NAME;
 import static com.dleague.lakeshoreimporters.utils.Constants.LAST_ORDERS;
 import static com.dleague.lakeshoreimporters.utils.Constants.SESSION;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, NetworkCallbacks, HttpResponseCallbacks, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements  NetworkCallbacks, HttpResponseCallbacks, View.OnClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -91,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView tvCartItems;
     @BindView(R.id.drawer)
     DrawerLayout drawerLayout;
-    @BindView(R.id.navigation)
-    NavigationView navigationView;
+   // @BindView(R.id.navigation)
+   // NavigationView navigationView;
 
     private ProductDTO productToView;
     private FragmentManager fragmentManager;
@@ -118,6 +119,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AppSpace.sharedPref.readValue(CUSTOMER_EMAIL, "0").equals("0")) {
             new CustomerIdTask().execute();
         }
+        else {
+            Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show(); 
+        }
         getOrders();
     }
     //for notification work
@@ -130,6 +134,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         super.onResume();
         updateCart();
+        if (AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0") ||
+                AppSpace.sharedPref.readValue(CUSTOMER_NAME, "0").equals("0") ||
+                AppSpace.sharedPref.readValue(CUSTOMER_EMAIL, "0").equals("0")) {
+            new CustomerIdTask().execute();
+        }
     }
 
     @Override
@@ -158,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btn_category.setOnClickListener(this);
         btn_home.setOnClickListener(this);
         btn_me.setOnClickListener(this);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+     /*   ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -168,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);*/
     }
 
     private void initObj() {
@@ -181,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         selectItem(0);
     }
 
-    @Override
+ /*   @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
         if (id == R.id.nav_home) {
@@ -190,15 +199,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_buy_now) {
             selectItem(1);
         }
-     /*   else if (id == R.id.nav_jake_spice) {
+     *//*   else if (id == R.id.nav_jake_spice) {
             selectItem(100);
-        }*/
+        }*//*
         else if (id == R.id.nav_case_extravaganza) {
             selectItem(101);
         }
-/*        else if (id == R.id.nav_buy_status) {
+*//*        else if (id == R.id.nav_buy_status) {
             selectItem(2);
-        }*/
+        }*//*
         else if (id == R.id.nav_extras) {
             selectItem(3);
         } else if (id == R.id.nav_bin_requests) {
@@ -223,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawers();
         return true;
-    }
+    }*/
 
     public static void sendFeedback(Context context) {
         String body = null;
@@ -428,20 +437,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void handleCalbackResponse(Response response) {
         if (Validations.isObjectNotEmptyAndNull(response)) {
             GetLastOrdersQuery.Data data = (GetLastOrdersQuery.Data) response.data();
+             Log.d("HELLO ORDERS","LIST"+data);
             if (Validations.isObjectNotEmptyAndNull(data)) {
-                lastOrdersList = data.customer().orders().edges();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        SrtNotification();
-                       // SharedPrefManager.getInstance(MainActivity.this).RemoveDays();
-                        // Log.d("HELLO ORDERS","LIST"+lastOrdersList.size());
-                        //Toast.makeText(MainActivity.this, "" + lastOrdersList.size(), Toast.LENGTH_SHORT).show();
-                        //myOrdersAdapter = new MyOrdersAdapter(MainActivity.this, lastOrdersList, MainActivity.this);
-                        //recyclerView.setAdapter(myOrdersAdapter);
-                        //myOrdersAdapter.notifyDataSetChanged();
-                    }
-                });
+                if(data.customer() != null)
+                {
+                    lastOrdersList = data.customer().orders().edges();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SrtNotification();
+                            // SharedPrefManager.getInstance(MainActivity.this).RemoveDays();
+                            // Log.d("HELLO ORDERS","LIST"+lastOrdersList.size());
+                            //Toast.makeText(MainActivity.this, "" + lastOrdersList.size(), Toast.LENGTH_SHORT).show();
+                            //myOrdersAdapter = new MyOrdersAdapter(MainActivity.this, lastOrdersList, MainActivity.this);
+                            //recyclerView.setAdapter(myOrdersAdapter);
+                            //myOrdersAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
             }
         }
     }

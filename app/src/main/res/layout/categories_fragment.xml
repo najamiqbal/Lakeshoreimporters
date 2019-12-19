@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,11 +36,14 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_booster">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_facebook" />
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
+                            android:src="@drawable/facebookbuys"
+                            />
                     </RelativeLayout>
 
                     <TextView
@@ -67,11 +71,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_booster">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_extrabuy" />
+                            android:src="@drawable/extea" />
                     </RelativeLayout>
 
                     <TextView
@@ -110,11 +116,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_cpu">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_season" />
+                            android:src="@drawable/seasonal" />
                     </RelativeLayout>
 
                     <TextView
@@ -123,7 +131,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/montserrat_medium"
-                        android:text="Seasonal Buy"
+                        android:text="Seasonal"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -142,11 +150,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_junk">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_electronics" />
+                            android:src="@drawable/electronics" />
                     </RelativeLayout>
 
                     <TextView
@@ -185,11 +195,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_booster">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_outdoor" />
+                            android:src="@drawable/outdoor" />
                     </RelativeLayout>
 
                     <TextView
@@ -217,11 +229,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_battery">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_jewelry" />
+                            android:src="@drawable/jewellery" />
                     </RelativeLayout>
 
                     <TextView
@@ -230,7 +244,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/montserrat_medium"
-                        android:text="Jewelry"
+                        android:text="Jewellry"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -258,11 +272,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_junk">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_kitchen" />
+                            android:src="@drawable/kitchen" />
                     </RelativeLayout>
 
                     <TextView
@@ -290,11 +306,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_battery">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_clothes" />
+                            android:src="@drawable/clothing" />
                     </RelativeLayout>
 
                     <TextView
@@ -332,11 +350,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_junk">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_beauty" />
+                            android:src="@drawable/beauty" />
                     </RelativeLayout>
 
                     <TextView
@@ -364,11 +384,13 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/bg_battery">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_toys" />
+                            android:src="@drawable/toygames" />
                     </RelativeLayout>
 
                     <TextView

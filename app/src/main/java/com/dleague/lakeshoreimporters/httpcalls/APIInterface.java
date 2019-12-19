@@ -15,7 +15,7 @@ public interface APIInterface {
     @GET("/search.json?")
     Call<Object> getCuctomer(@Query("query") String email);
 
-    @POST("250/{customer_id}/update_password?8be4cd7329747d6c206eda522e05e6a6")
+    @POST("250/{customer_id}/update_password?a88e3ae968399d2e2f8fa266cb8ba652")
     Call<UpdatePasswordResponse> updatePassword(@Path("customer_id") String customer_id, @Body Object object);
 
 }

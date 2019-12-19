@@ -266,7 +266,7 @@ public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClic
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv1:
-                ((MainActivity) Objects.requireNonNull(getActivity())).launchFragment(1);
+                ((MainActivity) Objects.requireNonNull(getActivity())).launchFragment(28);
                 break;
             case R.id.tv2:
                 ((MainActivity) Objects.requireNonNull(getActivity())).launchFragment(3);
