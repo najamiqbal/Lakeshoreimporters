@@ -113,7 +113,7 @@ public class NotificationFragment extends AppCompatActivity implements NetworkCa
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(NotificationFragment.this, ""+lastOrdersList.get(0).node().name(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(NotificationFragment.this, ""+lastOrdersList.get(0).node().name(), Toast.LENGTH_SHORT).show();
                         myOrdersAdapter = new MyNotificationAdapter(NotificationFragment.this, lastOrdersList, NotificationFragment.this);
                         recyclerView.setAdapter(myOrdersAdapter);
                         myOrdersAdapter.notifyDataSetChanged();

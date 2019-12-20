@@ -118,9 +118,10 @@ public class MainActivity extends AppCompatActivity implements  NetworkCallbacks
                 AppSpace.sharedPref.readValue(CUSTOMER_NAME, "0").equals("0") ||
                 AppSpace.sharedPref.readValue(CUSTOMER_EMAIL, "0").equals("0")) {
             new CustomerIdTask().execute();
+            //Toast.makeText(getBaseContext(), "HELLO if tag", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show(); 
+            Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show();
         }
         getOrders();
     }
@@ -413,7 +414,11 @@ public class MainActivity extends AppCompatActivity implements  NetworkCallbacks
                 selectItem(29);
                 break;
             case R.id.btn_alert:
-                startActivity(new Intent(MainActivity.this, NotificationFragment.class));
+                if (AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0")){
+                    startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                }else {
+                    startActivity(new Intent(MainActivity.this, NotificationFragment.class));
+                }
                 break;
             case R.id.btn_me:
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

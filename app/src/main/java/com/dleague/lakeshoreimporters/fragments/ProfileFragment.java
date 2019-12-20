@@ -22,6 +22,7 @@ import com.dleague.lakeshoreimporters.activities.EditCustomerInfo;
 import com.dleague.lakeshoreimporters.activities.MainActivity;
 import com.dleague.lakeshoreimporters.activities.MyOrdersActivity;
 import com.dleague.lakeshoreimporters.activities.SignInActivity;
+import com.dleague.lakeshoreimporters.activities.SignUpActivity;
 import com.dleague.lakeshoreimporters.activities.StoreCredits;
 import com.dleague.lakeshoreimporters.activities.WarrantyClaimActivity;
 import com.dleague.lakeshoreimporters.utils.MessageUtil;
@@ -60,16 +61,31 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     }
 
     @OnClick(R.id.layout_address_book)void setAddressBook(){
-        startActivity(new Intent(getActivity(), AddressBookActivity.class));
+        if (AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0")){
+            startActivity(new Intent(getActivity(), SignUpActivity.class));
+        }else {
+            startActivity(new Intent(getActivity(), AddressBookActivity.class));
+        }
+
     }
 
     @OnClick(R.id.layout_my_orders)void setMyOrders(){
-        startActivity(new Intent(getActivity(), MyOrdersActivity.class));
+        if (AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0")){
+            startActivity(new Intent(getActivity(), SignUpActivity.class));
+        }else {
+            startActivity(new Intent(getActivity(), MyOrdersActivity.class));
+        }
+
     }
 
 
     @OnClick(R.id.layout_edit_profile)void setEditProfile(){
-        startActivity(new Intent(getActivity(), EditCustomerInfo.class));
+        if (AppSpace.sharedPref.readValue(CUSTOMER_ID, "0").equals("0")){
+            startActivity(new Intent(getActivity(), SignUpActivity.class));
+        }else {
+            startActivity(new Intent(getActivity(), EditCustomerInfo.class));
+        }
+
     }
 
 /*    @OnClick(R.id.layout_store_credit)void setStoreCredits(){
