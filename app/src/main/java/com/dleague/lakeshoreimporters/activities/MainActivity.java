@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -64,6 +65,10 @@ import com.dleague.lakeshoreimporters.utils.SharedPrefManager;
 import com.dleague.lakeshoreimporters.utils.Validations;
 import com.google.android.material.navigation.NavigationView;
 
+import com.shashank.sony.fancygifdialoglib.FancyGifDialog;
+import com.shashank.sony.fancygifdialoglib.FancyGifDialogListener;
+
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -119,12 +124,40 @@ public class MainActivity extends AppCompatActivity implements  NetworkCallbacks
                 AppSpace.sharedPref.readValue(CUSTOMER_EMAIL, "0").equals("0")) {
             new CustomerIdTask().execute();
             //Toast.makeText(getBaseContext(), "HELLO if tag", Toast.LENGTH_SHORT).show();
+            ShowLoginDialog();
         }
         else {
-            Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show();
-            
+            //Toast.makeText(getBaseContext(), "HELLO", Toast.LENGTH_SHORT).show();
+
         }
         getOrders();
+    }
+
+    private void ShowLoginDialog() {
+        new FancyGifDialog.Builder(this)
+                .setTitle("get the best shopping experience")
+                .setMessage("Login/Sign up to be updated with latest offers.")
+                .setNegativeBtnText("Sign Up")
+                .setPositiveBtnBackground("#0658AF")
+                .setPositiveBtnText("Login")
+                .setNegativeBtnBackground("#00BBEC")
+                .setGifResource(R.drawable.lakeshore)   //Pass your Gif here
+                .isCancellable(true)
+                .OnPositiveClicked(new FancyGifDialogListener() {
+                    @Override
+                    public void OnClick() {
+                        //login btn
+                        //Toast.makeText(MainActivity.this,"+",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .OnNegativeClicked(new FancyGifDialogListener() {
+                    @Override
+                    public void OnClick() {
+                        //Sign up btn
+                        //Toast.makeText(MainActivity.this,"-",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build();
     }
     //for notification work
 
@@ -159,6 +192,7 @@ public class MainActivity extends AppCompatActivity implements  NetworkCallbacks
     void setIvCart() {
         startActivity(new Intent(this, CartActivity.class));
     }
+
 
     private void initView() {
         btn_home = findViewById(R.id.btn_home);

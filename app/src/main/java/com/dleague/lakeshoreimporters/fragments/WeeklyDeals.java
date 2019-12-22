@@ -1,16 +1,23 @@
 package com.dleague.lakeshoreimporters.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
@@ -40,7 +47,7 @@ import static com.dleague.lakeshoreimporters.utils.Constants.GET_COLLECTION_BY_I
 import static com.dleague.lakeshoreimporters.utils.Constants.LOG_TAG;
 import static com.dleague.lakeshoreimporters.utils.Constants.WEEKLY_BUY;
 
-public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClickListener {
+public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recyclerview_buy_now)
     RecyclerView recyclerView;
@@ -53,6 +60,7 @@ public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClic
     private String lastCursor;
     private int visibleItemCount, pastVisibleItems, totalItemCount;
     private GridLayoutManager gridLayoutManager;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private boolean hasNextPage, hasPreviousPage, isLoading;
 
     @Override
@@ -132,6 +140,27 @@ public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClic
         networkCalls = new NetworkCalls(getContext(), this);
         dialogBuilder = new DialogBuilder(getContext());
         productDTOList = new ArrayList<>();
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        SearchView simpleSearchView = (SearchView) rootView.findViewById(R.id.simpleSearchView);
+        simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (TextUtils.isEmpty(s)){
+                    productAdapter.filter("");
+                    //recyclerView.clearTextFilter();
+                }
+                else {
+                    productAdapter.filter(s);
+                }
+                return false;
+            }
+        });
     }
 
     private void getFirstProducts() {
@@ -226,4 +255,15 @@ public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClic
             }
         });
     }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 5000);
+    }
+
 }

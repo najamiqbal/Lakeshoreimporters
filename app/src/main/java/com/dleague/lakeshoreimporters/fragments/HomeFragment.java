@@ -6,7 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +47,7 @@ import static com.dleague.lakeshoreimporters.utils.Constants.GET_NEXT_PRODUCTS;
 import static com.dleague.lakeshoreimporters.utils.Constants.GET_PRODUCTS;
 import static com.dleague.lakeshoreimporters.utils.Constants.LOG_TAG;
 
-public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClickListener,View.OnClickListener{
+public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClickListener,View.OnClickListener, SwipeRefreshLayout.OnRefreshListener{
 
 
     private View rootView;
@@ -53,6 +55,7 @@ public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClic
     private DialogBuilder dialogBuilder;
     private ProductAdapter productAdapter;
     private List<ProductDTO> productDTOList;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private String lastCursor;
     TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10;
     ImageView about_img,weekly_img;
@@ -139,7 +142,9 @@ public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClic
         tv10.setOnClickListener(this);
         weekly_img.setOnClickListener(this);
         about_img.setOnClickListener(this);
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
 
+        swipeRefreshLayout.setOnRefreshListener(this);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
 //        recyclerView.setLayoutManager(gridLayoutManager);
         productDTOList = new ArrayList<>();
@@ -303,5 +308,15 @@ public class HomeFragment extends Fragment implements NetworkCallbacks, ItemClic
                 break;
 
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 5000);
     }
 }

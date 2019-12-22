@@ -1,6 +1,7 @@
 package com.dleague.lakeshoreimporters.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,9 @@ import com.dleague.lakeshoreimporters.dtos.ProductDTO;
 import com.dleague.lakeshoreimporters.listeners.ItemClickListener;
 import com.dleague.lakeshoreimporters.utils.Validations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
@@ -24,11 +27,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private Context context;
     private List<ProductDTO> productDTOList;
     private ItemClickListener itemClickListener;
+    private ArrayList<ProductDTO> arrayList;
 
     public ProductAdapter(Context context, List<ProductDTO> productDTOList, ItemClickListener itemClickListener) {
         this.context = context;
         this.productDTOList = productDTOList;
         this.itemClickListener = itemClickListener;
+        this.arrayList=new ArrayList<ProductDTO>();
+        this.arrayList.addAll(productDTOList);
     }
 
     public void updateProductsList(List<ProductDTO> productDTOList){
@@ -58,6 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             displayPrice = "From $" + productDTO.getProductPriceMin();
         }
         holder.name.setText(productDTO.getProductName());
+        Log.d("PRODUCT","NAME"+productDTO.getProductName());
         holder.price.setText(displayPrice);
         if(Validations.isObjectNotEmptyAndNull(productDTO.getImagesUrl()) &&  productDTO.getImagesUrl().size()>0) {
             if (Validations.isStringNotEmptyAndNull(productDTO.getImagesUrl().get(0))) {
@@ -80,6 +87,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     }
 
+
     public class ProductViewHolder extends RecyclerView.ViewHolder{
         // init the item view's
         TextView name, price, availableForSale;
@@ -92,5 +100,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             image = view.findViewById(R.id.iv_item_home_image);
             availableForSale = view.findViewById(R.id.tv_item_home_soldout);
         }
+    }
+    //filter
+    public void filter(String charText){
+        charText = charText.toLowerCase(Locale.getDefault());
+        Log.d("PRODUCT","NAME"+charText);
+        productDTOList.clear();
+        if (charText.length()==0){
+            Log.d("PRODUCT","NAME"+arrayList.size());
+            productDTOList.addAll(arrayList);
+        }
+        else {
+            for (ProductDTO model : arrayList){
+                Log.d("PRODUCT","NAME"+model.getProductName());
+                if (model.getProductName().toLowerCase(Locale.getDefault())
+                        .contains(charText)){
+                    productDTOList.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +43,7 @@ import static com.dleague.lakeshoreimporters.utils.Constants.GET_COLLECTION_BY_I
 import static com.dleague.lakeshoreimporters.utils.Constants.GET_COLLECTION_BY_ID_NEXT;
 import static com.dleague.lakeshoreimporters.utils.Constants.LOG_TAG;
 
-public class BuyNowFragment extends Fragment implements NetworkCallbacks, ItemClickListener {
+public class BuyNowFragment extends Fragment implements NetworkCallbacks, ItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recyclerview_buy_now)
     RecyclerView recyclerView;
@@ -52,6 +54,7 @@ public class BuyNowFragment extends Fragment implements NetworkCallbacks, ItemCl
     private ProductAdapter productAdapter;
     private List<ProductDTO> productDTOList;
     private String lastCursor;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private int visibleItemCount, pastVisibleItems, totalItemCount;
     private GridLayoutManager gridLayoutManager;
     private boolean hasNextPage, hasPreviousPage, isLoading;
@@ -133,6 +136,9 @@ public class BuyNowFragment extends Fragment implements NetworkCallbacks, ItemCl
         networkCalls = new NetworkCalls(getContext(), this);
         dialogBuilder = new DialogBuilder(getContext());
         productDTOList = new ArrayList<>();
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     private void getFirstProducts() {
@@ -226,5 +232,15 @@ public class BuyNowFragment extends Fragment implements NetworkCallbacks, ItemCl
                 dialogBuilder.dismissDialog();
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 5000);
     }
 }

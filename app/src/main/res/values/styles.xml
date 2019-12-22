@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/themeLightBlue</item>
         <item name="colorPrimaryDark">@color/themeBlue</item>
         <item name="colorAccent">@color/themeBlue</item>
+
+
     </style>
 
     <style name="SplashTheme" parent="@style/Theme.AppCompat.Light">

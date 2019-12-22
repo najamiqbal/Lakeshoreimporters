@@ -1,5 +1,10 @@
 package com.dleague.lakeshoreimporters.fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -7,20 +12,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
+
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
+import com.bumptech.glide.Glide;
 import com.dleague.lakeshoreimporters.GetProductByHandleQuery;
 import com.dleague.lakeshoreimporters.R;
 import com.dleague.lakeshoreimporters.activities.AppSpace;
@@ -34,8 +48,19 @@ import com.dleague.lakeshoreimporters.utils.HelperMethods;
 import com.dleague.lakeshoreimporters.utils.MessageUtil;
 import com.dleague.lakeshoreimporters.utils.Validations;
 import com.glide.slider.library.SliderLayout;
-import com.glide.slider.library.SliderTypes.DefaultSliderView;
+import com.glide.slider.library.animations.DescriptionAnimation;
+import com.glide.slider.library.slidertypes.BaseSliderView;
+import com.glide.slider.library.slidertypes.DefaultSliderView;
+import com.glide.slider.library.slidertypes.TextSliderView;
+import com.glide.slider.library.tricks.ViewPagerEx;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+import com.zolad.zoominimageview.ZoomInImageViewAttacher;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -51,7 +76,8 @@ import static com.dleague.lakeshoreimporters.activities.AppSpace.cartItemCount;
 import static com.dleague.lakeshoreimporters.utils.Constants.GET_PRODUCT_BY_HANDLE;
 import static com.dleague.lakeshoreimporters.utils.Constants.LOG_TAG;
 
-public class ProductDetailFragment extends Fragment implements NetworkCallbacks {
+public class ProductDetailFragment extends Fragment implements BaseSliderView.OnSliderClickListener,
+        ViewPagerEx.OnPageChangeListener, NetworkCallbacks {
 
     @BindView(R.id.product_images_slider)
     SliderLayout slider;
@@ -59,6 +85,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
     TextView tvProductName;
     @BindView(R.id.tv_pd_price)
     TextView tvProductPrice;
+    RelativeLayout ok;
     //    @BindView(R.id.tv_pd_description)
 //    HtmlTextView tvProductDescription;
     @BindView(R.id.tv_pd_tellme_more)
@@ -98,6 +125,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
     private Map<String, String> varintIdsByValue;
     private String variantNameOne, variantNameTwo;
     private Map<String, String> varintIdsByImage;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_product_detail, container, false);
@@ -105,6 +133,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         getExtras();
         init();
         getProductByHandle();
+
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -137,7 +166,34 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
 
             }
         });
+
         return rootView;
+    }
+
+    public void _setImageSlider() {
+        if (productDTO.isAvailableForSale()) {
+            isViewFlip = false;
+            viewFlipper.setDisplayedChild(0);
+        } else {
+            isViewFlip = true;
+            viewFlipper.setDisplayedChild(1);
+        }
+        DefaultSliderView sliderView;
+        for (String str : productDTO.getImagesUrl()) {
+            sliderView = new DefaultSliderView(getContext());
+            sliderView.image(str);
+            slider.addSlider(sliderView);
+
+            sliderView.setOnSliderClickListener(this);
+            // initialize SliderLayout
+        }
+        slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        slider.setPresetTransformer("ZoomIn");
+
+        slider.setCustomAnimation(new DescriptionAnimation());
+        slider.setDuration(4000);
+        slider.addOnPageChangeListener(this);
+        slider.stopCyclingWhenTouch(false);
     }
 
     @Override
@@ -148,7 +204,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
     @OnClick(R.id.tv_pd_add_to_cart)
     void setTvAddToCart() {
         String imageURL = productDTO.getImagesUrl().get(0);
-        if(Validations.isObjectNotEmptyAndNull(varintIdsByImage)) {
+        if (Validations.isObjectNotEmptyAndNull(varintIdsByImage)) {
             imageURL = varintIdsByImage.get(productDTO.getVariantsId());
         }
         CartDTO cartDTO = new CartDTO(productDTO.getProductId(), productDTO.getVariantsId(), productDTO.getCursor(),
@@ -206,6 +262,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         varintMapTwo = new HashMap<>();
         varintIdsByValue = new HashMap<>();
         varintIdsByImage = new HashMap<>();
+
     }
 
     private void getProductByHandle() {
@@ -364,14 +421,21 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
                     isViewFlip = true;
                     viewFlipper.setDisplayedChild(1);
                 }
-                DefaultSliderView sliderView;
-                for (String str : productDTO.getImagesUrl()) {
-                    sliderView = new DefaultSliderView(getContext());
-                    sliderView.image(str);
-                    slider.addSlider(sliderView);
-                }
-                slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-                slider.setPresetTransformer("ZoomIn");
+                _setImageSlider();
+//                DefaultSliderView sliderView;
+//                for (String str : productDTO.getImagesUrl()) {
+//                    sliderView = new DefaultSliderView(getContext());
+//                    sliderView.image(str);
+//                    slider.addSlider(sliderView);
+//                }
+//                slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+//                slider.setPresetTransformer("ZoomIn");
+//
+//                slider.setCustomAnimation(new DescriptionAnimation());
+//                slider.setDuration(4000);
+//                //slider.addOnPageChangeListener(this);
+//                slider.stopCyclingWhenTouch(false);
+
                 tvProductName.setText(productDTO.getProductName());
                 if (productDTO.getProductPriceMax().equals(productDTO.getProductPriceMin())) {
                     displayPrice = "$" + productDTO.getProductPriceMax();
@@ -398,31 +462,56 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         });
     }
 
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+
+
+        Log.i("Testing here", slider.getUrl());
+        showPopup(slider.getUrl());
+        Toast.makeText(getContext(), slider.getUrl(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
     private class ImageGetter implements Html.ImageGetter {
 
-    public Drawable getDrawable(String source) {
+        public Drawable getDrawable(String source) {
             int id;
             if (source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_844e86c5-abb6-4be6-a501-c6098a64a0c0_large.png?v=1546731922")) {
-                   id = R.drawable.ic_tell_me_more;
-            }else if(source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_b9af8aca-4c70-4c59-a5ac-63edde98d9f7_large.png?v=1546731776")){
+                id = R.drawable.ic_tell_me_more;
+            } else if (source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_b9af8aca-4c70-4c59-a5ac-63edde98d9f7_large.png?v=1546731776")) {
                 id = R.drawable.ic_estimated_delivery;
-            }else if(source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_11ed603c-b8cb-4419-89c8-fb3eaf77d8d9_large.png?v=1546732038")){
+            } else if (source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_11ed603c-b8cb-4419-89c8-fb3eaf77d8d9_large.png?v=1546732038")) {
                 id = R.drawable.ic_client_faq;
-            }else if (source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_bd8db3ba-e721-4b16-ae1f-21adc16e4e61_large.png?v=1546731976")){
+            } else if (source.equals("https://cdn.shopify.com/s/files/1/1789/3041/files/icone-calendario_bd8db3ba-e721-4b16-ae1f-21adc16e4e61_large.png?v=1546731976")) {
                 id = R.drawable.ic_warranty_period;
-            }
-            else {
+            } else {
                 return null;
             }
 
-           Drawable d = getResources().getDrawable(id);
-           d.setBounds(0,0,d.getIntrinsicWidth(),d.getIntrinsicHeight());
+            Drawable d = getResources().getDrawable(id);
+            d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
 
-           return d;
-         }
-    };
+            return d;
+        }
+    }
 
-    private void setProductDetail(){
+    ;
+
+    private void setProductDetail() {
         List<String> description = new ArrayList<>();
         description = HelperMethods.filterDescription(productDTO.getDescription());
         Log.i(LOG_TAG, description.toString());
@@ -433,6 +522,7 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         String value;
         String price;
         String variantId;
+
         public SelectedOptions() {
         }
 
@@ -474,5 +564,56 @@ public class ProductDetailFragment extends Fragment implements NetworkCallbacks 
         public void setValue(String value) {
             this.value = value;
         }
+    }
+
+    public void showPopup(String url) {
+
+        final View popupView = LayoutInflater.from(getContext()).inflate(R.layout.popup_rest_window, null);
+        final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        final ImageButton skipbtn = (ImageButton) popupView.findViewById(R.id.cross_popup);
+        final ImageView popup_image=(ImageView) popupView.findViewById(R.id.popu_image);
+        if (url != null) {
+            Glide.with(getContext()).load(url).dontAnimate().fitCenter().placeholder(R.drawable.logo).into(popup_image);
+        }
+        ZoomInImageViewAttacher mIvAttacter = new ZoomInImageViewAttacher();
+        mIvAttacter.attachImageView(popup_image);
+        //final ProgressBar mProgress = popupView.findViewById(R.id.circularProgressbar);
+
+
+        skipbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.setFocusable(true);
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+    }
+
+    public void showImage(String imageUri) {
+        Dialog builder = new Dialog(getContext());
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        builder.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //nothing;
+            }
+        });
+
+        ImageView imageView = new ImageView(getContext());
+        //imageView.setImageURI(imageUri);
+        if (imageUri != null) {
+            Glide.with(getContext()).load(imageUri).dontAnimate().fitCenter().placeholder(R.drawable.logo).into(imageView);
+        }
+        //Picasso.get().load(imageUri).placeholder(R.drawable.logo).into(imageView);
+        builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        builder.show();
     }
 }

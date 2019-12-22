@@ -151,7 +151,7 @@ public class ShippingAddressActivity extends AppCompatActivity implements Networ
         });
         getExtras();
         init();
-        new GetSpentRuleTask().execute();
+        //new GetSpentRuleTask().execute();
     }
 
     @Override
@@ -383,7 +383,7 @@ public class ShippingAddressActivity extends AppCompatActivity implements Networ
         if (Validations.isObjectNotEmptyAndNull(object)) {
             GetSpentRuleDTO data = (GetSpentRuleDTO) object;
 
-            totalCredits = data.code.totalCredits / 100;
+            //totalCredits = data.code.totalCredits / 100;
             spentRuleList.clear();
             spentRuleMap.clear();
 
