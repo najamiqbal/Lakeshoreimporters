@@ -258,7 +258,7 @@
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Warrenty Claim"/>
+            android:text="Warranty Claim"/>
 
         <ImageView
             android:layout_width="0dp"

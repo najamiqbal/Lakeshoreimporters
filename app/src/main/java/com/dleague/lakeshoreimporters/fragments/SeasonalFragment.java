@@ -2,10 +2,13 @@ package com.dleague.lakeshoreimporters.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,6 +60,7 @@ public class SeasonalFragment extends Fragment implements NetworkCallbacks, Item
     private GridLayoutManager gridLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean hasNextPage, hasPreviousPage, isLoading;
+    EditText simpleSearchView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -138,6 +142,40 @@ public class SeasonalFragment extends Fragment implements NetworkCallbacks, Item
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
 
         swipeRefreshLayout.setOnRefreshListener(this);
+        simpleSearchView =  rootView.findViewById(R.id.simpleSearchView);
+        simpleSearchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //after the change calling the method and passing the search input
+                filter(editable.toString());
+            }
+        });
+    }
+    private void filter(String text) {
+        //new array list that will hold the filtered data
+        ArrayList<ProductDTO> filterdNames = new ArrayList<>();
+
+        //looping through existing elements
+        for (ProductDTO s : productDTOList) {
+            //if the existing elements contains the search input
+            if (s.getProductName().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filterdNames.add(s);
+            }
+        }
+
+        //calling a method of the adapter class and passing the filtered list
+        productAdapter.filterList(filterdNames);
     }
 
     private void getFirstProducts() {

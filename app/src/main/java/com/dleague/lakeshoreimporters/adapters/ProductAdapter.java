@@ -101,24 +101,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             availableForSale = view.findViewById(R.id.tv_item_home_soldout);
         }
     }
-    //filter
-    public void filter(String charText){
-        charText = charText.toLowerCase(Locale.getDefault());
-        Log.d("PRODUCT","NAME"+charText);
-        productDTOList.clear();
-        if (charText.length()==0){
-            Log.d("PRODUCT","NAME"+arrayList.size());
-            productDTOList.addAll(arrayList);
-        }
-        else {
-            for (ProductDTO model : arrayList){
-                Log.d("PRODUCT","NAME"+model.getProductName());
-                if (model.getProductName().toLowerCase(Locale.getDefault())
-                        .contains(charText)){
-                    productDTOList.add(model);
-                }
-            }
-        }
+//    //filter
+//    public void filter(String charText){
+//        charText = charText.toLowerCase(Locale.getDefault());
+//        Log.d("PRODUCT","NAME"+charText);
+//        productDTOList.clear();
+//        if (charText.length()==0){
+//            Log.d("PRODUCT","NAME"+arrayList.size());
+//            productDTOList.addAll(arrayList);
+//        }
+//        else {
+//            for (ProductDTO model : arrayList){
+//                Log.d("PRODUCT","NAME"+model.getProductName());
+//                if (model.getProductName().toLowerCase(Locale.getDefault())
+//                        .contains(charText)){
+//                    productDTOList.add(model);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
+
+    public void filterList(ArrayList<ProductDTO> filterdNames) {
+        this.productDTOList = filterdNames;
         notifyDataSetChanged();
     }
 }

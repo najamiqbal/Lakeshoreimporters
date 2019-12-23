@@ -13,7 +13,15 @@
         android:layout_height="wrap_content"
         android:background="@color/light_background"
         android:orientation="vertical">
-
+        <EditText
+            android:id="@+id/simpleSearchView"
+            android:layout_width="match_parent"
+            android:background="@drawable/et_background"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:hint="Search by Name"
+            android:drawableRight="@drawable/ic_search_black_24dp"
+            android:layout_height="wrap_content" />
    <!--     <ImageView
             android:layout_width="match_parent"
             android:layout_height="170dp"

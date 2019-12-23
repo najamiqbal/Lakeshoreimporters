@@ -188,7 +188,6 @@ public class ProductDetailFragment extends Fragment implements BaseSliderView.On
             // initialize SliderLayout
         }
         slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        slider.setPresetTransformer("ZoomIn");
 
         slider.setCustomAnimation(new DescriptionAnimation());
         slider.setDuration(4000);
@@ -468,7 +467,7 @@ public class ProductDetailFragment extends Fragment implements BaseSliderView.On
 
         Log.i("Testing here", slider.getUrl());
         showPopup(slider.getUrl());
-        Toast.makeText(getContext(), slider.getUrl(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), slider.getUrl(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -593,7 +592,7 @@ public class ProductDetailFragment extends Fragment implements BaseSliderView.On
 
     }
 
-    public void showImage(String imageUri) {
+   /* public void showImage(String imageUri) {
         Dialog builder = new Dialog(getContext());
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
         builder.getWindow().setBackgroundDrawable(
@@ -615,5 +614,5 @@ public class ProductDetailFragment extends Fragment implements BaseSliderView.On
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         builder.show();
-    }
+    }*/
 }

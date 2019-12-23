@@ -2,7 +2,9 @@ package com.dleague.lakeshoreimporters.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +65,7 @@ public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClic
     private GridLayoutManager gridLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean hasNextPage, hasPreviousPage, isLoading;
-
+    EditText simpleSearchView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_weekly_deals, container, false);
@@ -142,26 +145,61 @@ public class WeeklyDeals  extends Fragment implements NetworkCallbacks, ItemClic
         productDTOList = new ArrayList<>();
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
-        SearchView simpleSearchView = (SearchView) rootView.findViewById(R.id.simpleSearchView);
-        simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        simpleSearchView =  rootView.findViewById(R.id.simpleSearchView);
+        simpleSearchView.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                if (TextUtils.isEmpty(s)){
-                    productAdapter.filter("");
-                    //recyclerView.clearTextFilter();
-                }
-                else {
-                    productAdapter.filter(s);
-                }
-                return false;
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //after the change calling the method and passing the search input
+                    filter(editable.toString());
             }
         });
+//        simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                if (TextUtils.isEmpty(s)){
+//                    productAdapter.filter("");
+//                    //recyclerView.clearTextFilter();
+//                }
+//                else {
+//                    productAdapter.filter(s);
+//                }
+//                return false;
+//            }
+//        });
     }
+
+    private void filter(String text) {
+        //new array list that will hold the filtered data
+        ArrayList<ProductDTO> filterdNames = new ArrayList<>();
+
+        //looping through existing elements
+        for (ProductDTO s : productDTOList) {
+            //if the existing elements contains the search input
+            if (s.getProductName().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filterdNames.add(s);
+            }
+        }
+
+        //calling a method of the adapter class and passing the filtered list
+        productAdapter.filterList(filterdNames);
+    }
+
 
     private void getFirstProducts() {
         networkCalls.getFirstCollectionsById(WEEKLY_BUY, 20);
